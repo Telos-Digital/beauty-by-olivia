@@ -17,8 +17,8 @@ Mangomint page at The Blonde Magnolia. Pushed exactly as designed in the
 mockup, with no edits to the markup.
 
 ## Next Action
-Get Olivia's Facebook profile URL so the social mention becomes a real link,
-and pick which of the two designs is the real site.
+Pick which of the two designs is the real site, then retire the other. Both are
+live with identical content and only one should be.
 
 ## Blockers
 None technical. Everything outstanding needs information from Olivia.
@@ -26,12 +26,27 @@ None technical. Everything outstanding needs information from Olivia.
 ## Open Questions
 - Editorial or gingham? Both are live; only one should be.
 - Facebook profile URL for Olivia Dixon, to turn the mention into a link.
+- More photos? Three are up. Six would fill two rows evenly in both designs.
 - Does she want a phone number on the site at all, or is booking enough?
 - Street address for The Blonde Magnolia, or is the booking link enough?
 - Buy `beautybyolivia.com`? It appears unregistered. About $10 the first year,
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-10 (photos)
+- Added three real photos of Olivia's work, supplied by the salon owner, to both
+  designs. Every "photo coming soon" placeholder is gone.
+- Converted to WebP at 1000px wide, quality 80: 530 KB of JPEG became 352 KB.
+  Lazy-loaded, with width and height set so the layout holds while they load.
+- Both galleries are now a three-up. The editorial mosaic became a plain
+  portrait grid, since the original mosaic assumed landscape crops and these are
+  all 3:4 portrait.
+- Caught an aspect-ratio bug in the render check: the `height` attribute beat the
+  CSS `aspect-ratio` because `width` was also set, stretching every tile to its
+  full 1333px. Fixed with `height:auto`.
+- The third photo shows a client's face. Held it back until the user confirmed
+  the owner had her consent, then added it.
+
 ### 2026-09-10 (later)
 - Removed every invented detail from both live designs: the phone number
   `(000) 000-0000`, the address `hello@beautybyolivia.com`, and the unconfirmed
