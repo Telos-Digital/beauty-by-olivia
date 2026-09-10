@@ -3,14 +3,18 @@
 Static one-page site for Olivia, booth stylist at The Blonde Magnolia,
 South Carolina. Single `index.html`, no build step, no dependencies.
 
-Deployed on GitHub Pages from `main` / root.
+Deployed on GitHub Pages from `main` / root, at
+https://telos-digital.github.io/beauty-by-olivia/
+
+**Pages must be enabled by the repo owner in the browser.** Collaborators on a
+personal repo only get write access, so the API cannot switch it on.
 
 ## Two designs are live
 
 | Design | File | URL |
 |---|---|---|
-| Editorial (current main site) | `index.html` | https://jimmyardis.github.io/beauty-by-olivia/ |
-| Gingham / romantic | `gingham.html` | https://jimmyardis.github.io/beauty-by-olivia/gingham.html |
+| Editorial (current main site) | `index.html` | https://telos-digital.github.io/beauty-by-olivia/ |
+| Gingham / romantic | `gingham.html` | https://telos-digital.github.io/beauty-by-olivia/gingham.html |
 
 Same content and the same booking link in both. They differ only in art
 direction: the editorial version is Fraunces over Work Sans in dusty rose, the

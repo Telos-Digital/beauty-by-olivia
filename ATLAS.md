@@ -4,9 +4,9 @@
 | Last Active | 2026-09-10 |
 | Status | shipping |
 | Location | /home/wner/beauty-by-olivia |
-| Repo | jimmyardis/beauty-by-olivia (public) |
-| Live URL | https://jimmyardis.github.io/beauty-by-olivia/ |
-| Alt design | https://jimmyardis.github.io/beauty-by-olivia/gingham.html |
+| Repo | Telos-Digital/beauty-by-olivia (public) |
+| Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
+| Alt design | https://telos-digital.github.io/beauty-by-olivia/gingham.html |
 
 ## Current State
 Live on GitHub Pages, verified by HTTP 200 and a render check on the deployed
@@ -33,6 +33,21 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-10 (moved to Telos-Digital)
+- Moved the site off the personal account. Full history, both designs and all
+  three photos now live at `Telos-Digital/beauty-by-olivia`, verified serving at
+  https://telos-digital.github.io/beauty-by-olivia/.
+- Route taken: the user created the empty repo in the browser and added
+  `jimmyardis` as a collaborator; I accepted the invitation over the API and
+  pushed. `gh auth login` was a dead end — its device flow needs an interactive
+  terminal and hangs in this environment.
+- **Collaborators on a personal repo only ever get write access.** Role levels
+  like Admin are an organization feature. That means the repo owner has to
+  enable Pages in the browser; it cannot be done over the API from here.
+- The old repo at `jimmyardis/beauty-by-olivia` is still live and untouched,
+  pending the user's decision to delete or archive it.
+- Local remotes: `origin` now points at Telos-Digital, `jimmyardis-old` at the
+  original.
 ### 2026-09-10 (photos)
 - Added three real photos of Olivia's work, supplied by the salon owner, to both
   designs. Every "photo coming soon" placeholder is gone.
