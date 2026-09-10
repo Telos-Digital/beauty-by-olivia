@@ -17,21 +17,33 @@ Mangomint page at The Blonde Magnolia. Pushed exactly as designed in the
 mockup, with no edits to the markup.
 
 ## Next Action
-Pick which of the two designs is the real site, then replace the placeholder
-phone number `(000) 000-0000`, which is visible on both.
+Get Olivia's Facebook profile URL so the social mention becomes a real link,
+and pick which of the two designs is the real site.
 
 ## Blockers
 None technical. Everything outstanding needs information from Olivia.
 
 ## Open Questions
 - Editorial or gingham? Both are live; only one should be.
-- What is the real phone number, and should it appear at all?
-- Does `hello@beautybyolivia.com` exist as a mailbox?
-- Is `@beautybyolivia` the correct Instagram handle?
+- Facebook profile URL for Olivia Dixon, to turn the mention into a link.
+- Does she want a phone number on the site at all, or is booking enough?
 - Street address for The Blonde Magnolia, or is the booking link enough?
-- Is there a custom domain, or does the github.io URL stand?
+- Buy `beautybyolivia.com`? It appears unregistered. About $10 the first year,
+  $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-10 (later)
+- Removed every invented detail from both live designs: the phone number
+  `(000) 000-0000`, the address `hello@beautybyolivia.com`, and the unconfirmed
+  Instagram handle `@beautybyolivia`. The client confirmed the email was not
+  real.
+- The contact card now leads with online booking, which is the only real
+  channel, and names Olivia Dixon on Facebook as plain text. Deliberately not
+  linked: a name is not a URL, and guessing one risks pointing at a stranger.
+- Verified on both live URLs that nothing fake survives.
+- Checked domain availability: `beautybyolivia.com` has no DNS records and
+  appears unregistered.
+
 ### 2026-09-10
 - Pushed the gingham design as `gingham.html` alongside the editorial
   `index.html`, so both art directions are live and comparable. Chose not to
