@@ -191,7 +191,7 @@
   /* GALLERY */
   .gallery-grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(3, minmax(0,1fr));
     gap:28px;
   }
   .gallery-item{
@@ -219,6 +219,13 @@
     display:flex; align-items:center; justify-content:center;
   }
   .gallery-photo svg{width:26px; height:26px; opacity:.55; color:var(--wine);}
+  img.gallery-photo{
+    object-fit:cover;
+    min-height:0;
+    height:auto;
+    background:none;
+    width:100%;
+  }
   .gallery-item span{font-family:var(--script); font-size:1.1rem; text-align:center; color:var(--wine-soft); padding-top:10px;}
 
   /* ABOUT */
@@ -408,12 +415,9 @@
       <p>A look at cuts, color, and styling from the chair.</p>
     </div>
     <div class="gallery-grid">
-      <div class="gallery-item"><div class="gallery-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/><path d="M12 3v12"/></svg></div><span>photo coming soon</span></div>
-      <div class="gallery-item"><div class="gallery-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/><path d="M12 3v12"/></svg></div><span>photo coming soon</span></div>
-      <div class="gallery-item"><div class="gallery-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/><path d="M12 3v12"/></svg></div><span>photo coming soon</span></div>
-      <div class="gallery-item"><div class="gallery-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/><path d="M12 3v12"/></svg></div><span>photo coming soon</span></div>
-      <div class="gallery-item"><div class="gallery-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/><path d="M12 3v12"/></svg></div><span>photo coming soon</span></div>
-      <div class="gallery-item"><div class="gallery-photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 9l6 6 6-6"/><path d="M12 3v12"/></svg></div><span>photo coming soon</span></div>
+      <div class="gallery-item"><img class="gallery-photo" src="images/caramel-balayage.webp" width="1000" height="1333" loading="lazy" alt="Long wavy hair in a warm caramel balayage, photographed from behind at The Blonde Magnolia"><span>caramel balayage</span></div>
+      <div class="gallery-item"><img class="gallery-photo" src="images/black-gloss.webp" width="1000" height="1333" loading="lazy" alt="Long straight black hair with a high-shine gloss, photographed from behind at The Blonde Magnolia"><span>black gloss</span></div>
+      <div class="gallery-item"><img class="gallery-photo" src="images/honey-highlights.webp" width="1000" height="1333" loading="lazy" alt="Long wavy hair in honey and copper highlights with a face-framing cut, styled at The Blonde Magnolia"><span>honey highlights</span></div>
     </div>
   </div>
 </section>

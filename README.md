@@ -31,7 +31,6 @@ site.
 |---|---|---|
 | Contact card | "Olivia Dixon on Facebook" | The profile URL, so it becomes a real link |
 | Contact card | "South Carolina" | Street address of The Blonde Magnolia |
-| Gallery | "photo coming soon" tiles | Real photos of her work |
 
 The fake phone number, fake email and unconfirmed Instagram handle were removed
 on 2026-09-10. Nothing on the live site is invented any more. Booking is the
