@@ -5,6 +5,26 @@ South Carolina. Single `index.html`, no build step, no dependencies.
 
 Deployed on GitHub Pages from `main` / root.
 
+## Two designs are live
+
+| Design | File | URL |
+|---|---|---|
+| Editorial (current main site) | `index.html` | https://jimmyardis.github.io/beauty-by-olivia/ |
+| Gingham / romantic | `gingham.html` | https://jimmyardis.github.io/beauty-by-olivia/gingham.html |
+
+Same content and the same booking link in both. They differ only in art
+direction: the editorial version is Fraunces over Work Sans in dusty rose, the
+gingham version is Cormorant Garamond with a Parisienne script in wine and
+bubblegum, with scalloped dividers and floral bands.
+
+To make the gingham version the main site: `git mv gingham.html index.html`
+(after moving the editorial one aside), commit, push.
+
+**Weight warning:** `gingham.html` is 3.3 MB because two decorative PNGs are
+embedded as base64 data URIs, one of them 2.4 MB. That is slow on a phone.
+Extract them to real image files and compress before this becomes the main
+site.
+
 ## Live placeholders — fix these
 
 | Where | Currently | Needs |
