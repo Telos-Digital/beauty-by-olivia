@@ -6,7 +6,6 @@
 | Location | /home/wner/beauty-by-olivia |
 | Repo | Telos-Digital/beauty-by-olivia (public) |
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
-| Alt design | https://telos-digital.github.io/beauty-by-olivia/gingham.html |
 
 ## Current State
 Live on GitHub Pages, verified by HTTP 200 and a render check on the deployed
@@ -17,14 +16,13 @@ Mangomint page at The Blonde Magnolia. Pushed exactly as designed in the
 mockup, with no edits to the markup.
 
 ## Next Action
-Pick which of the two designs is the real site, then retire the other. Both are
-live with identical content and only one should be.
+Get Olivia's Facebook profile URL so the social mention becomes a real link, and
+decide on the `beautybyolivia.com` domain.
 
 ## Blockers
 None technical. Everything outstanding needs information from Olivia.
 
 ## Open Questions
-- Editorial or gingham? Both are live; only one should be.
 - Facebook profile URL for Olivia Dixon, to turn the mention into a link.
 - More photos? Three are up. Six would fill two rows evenly in both designs.
 - Does she want a phone number on the site at all, or is booking enough?
@@ -33,6 +31,17 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-10 (correct design promoted)
+- **The wrong design had been live all along.** The user clarified that the
+  editorial mockup was a throwaway and the gingham one is the real site. Promoted
+  `gingham.html` to `index.html` and removed the editorial page from the site.
+  It stays in git history.
+- Fixed the weight problem as part of the swap: extracted the two decorative
+  PNGs that were embedded as base64 into `images/floral-band.webp` and
+  `images/scissors.webp`. **The HTML went from 3,233 KB to 17 KB**, with 132 KB
+  and 4 KB of images beside it. The floral band was downscaled to 760px tall,
+  twice its 380px display height, and still tiles seamlessly.
+- Verified no request failures and no `base64` string left in the page.
 ### 2026-09-10 (moved to Telos-Digital)
 - Moved the site off the personal account. Full history, both designs and all
   three photos now live at `Telos-Digital/beauty-by-olivia`, verified serving at
