@@ -8,11 +8,11 @@
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
 
 ## Current State
-Live on GitHub Pages with the gingham design. The gallery opens on "Olivia's
-Favorites", showing photos marked `data-favorite`, and has plain-text tabs for
-her eight categories. Before & Afters appear as pairs of two photos side by
-side with a line between them; two placeholder pairs are up. Every empty
-category shows a patterned "coming soon" tile.
+Live on GitHub Pages with the gingham design. The gallery works as a category
+slideshow: it shows one category at a time by name ("1 of 9"), prev/next
+arrows and swiping step through them, and a "+ all categories" button opens
+the full list. It opens on Olivia's Favorites. Before & Afters are pairs of
+photos side by side. The hero scissors use the floral band pattern.
 
 ## Next Action
 Add the new batch of photos the user is sending, each tagged with its category.
@@ -31,6 +31,15 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (category slideshow)
+- The user found the category row crowded. It was fine with borders, just not
+  pill-shaped ones. The gallery now shows one category at a time: the current
+  name in script with "N of 9", square arrows on each side of the photos, and
+  swipe on touch. The full list hides behind a "+ all categories" toggle (the
+  + becomes a − when open) and closes after a pick. The list buttons are
+  squared, thin-bordered boxes, with the selected one filled in wine.
+- The arrows sit outside the photos above 1240px and overlap the edges below
+  that, at a smaller size on phones. Pushed in commit 140608e.
 ### 2026-09-19 (floral scissors)
 - The hero scissors now use the floral band pattern instead of solid pink. I
   baked them into `images/scissors-floral.webp` by clipping the floral tile to
