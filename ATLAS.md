@@ -8,13 +8,12 @@
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
 
 ## Current State
-Live on GitHub Pages with the gingham design. On a computer the hero has
-three columns: an arched, gold-framed slideshow of four free stock photos
-(hands and hair only, no faces) on the left, the words in the middle, and the
-big floral scissors on the right. On a phone or tablet the words come first,
-with the photos and scissors side by side underneath. Below it: services, the category-slideshow
-gallery (opens on Olivia's Favorites), a placeholder Products I Love section,
-About, and contact.
+Live on GitHub Pages with the gingham design. The hero on a computer has the
+photo slideshow on the left in a rectangular double-gold frame, with four
+faceless stock photos, and the words on the right. On a phone the photos go
+under the words. The floral scissors are a small accent beside
+"welcome, y'all". Below that: services, the category-slideshow gallery, a
+placeholder Products I Love section, About, and contact.
 
 ## Next Action
 Add the new photos (with category, favorite, and before/after pairing) and
@@ -35,6 +34,15 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (rectangle photos, scissors as accent)
+- The user said the phone layout looked horrible with the scissors as their
+  own element beside the photos. The scissors are now a 62px accent (48px on
+  phone) inline next to "welcome, y'all", so the words get the space.
+- Arch frame changed to a rectangle, keeping the double gold border. Computer
+  layout is two columns, photos then words; tablet and phone stack words over
+  photos.
+- Lesson: the user wants the scissors as a small accent near the text, never
+  a standalone element that claims space.
 ### 2026-09-19 (hero layouts, spray photo)
 - The user asked for separate computer and phone layouts. It's one CSS grid
   with `grid-template-areas`: "photos words scissors" above 1000px, and

@@ -124,13 +124,12 @@
     overflow:hidden;
     padding:0;
   }
-  /* computer: photos | words | scissors.  tablet & phone: words on top,
-     photos and scissors side by side underneath (see media queries) */
+  /* computer: photos | words.  tablet & phone: words on top, photos below */
   .hero-grid{
     display:grid; align-items:center;
-    grid-template-columns:0.85fr 1.3fr 0.85fr;
-    grid-template-areas:"photos words scissors";
-    gap:40px;
+    grid-template-columns:0.8fr 1.2fr;
+    grid-template-areas:"photos words";
+    gap:56px;
     max-width:1240px; margin:0 auto;
     padding:56px 32px 72px;
   }
@@ -138,22 +137,22 @@
   .hero-photos{grid-area:photos;}
   .hero-inner{
     text-align:center;
-    max-width:560px;
+    max-width:620px;
     margin:0 auto;
     position:relative; z-index:1;
   }
-  .eyebrow-hero{font-family:var(--script); font-size:1.7rem; color:var(--bubblegum); margin-bottom:6px;}
+  .eyebrow-hero{font-family:var(--script); font-size:1.7rem; color:var(--bubblegum); margin-bottom:6px;
+    display:inline-flex; align-items:center; gap:12px;}
   .hero h1{font-size:3.4rem; margin-bottom:20px; font-style:italic;}
   .hero p.lead{font-size:1.2rem; color:var(--wine-soft); max-width:460px; margin:0 auto 36px; font-family:var(--body);}
   .hero-ctas{display:flex; gap:18px; flex-wrap:wrap; justify-content:center;}
   .hero-rule{
     width:70px; height:2px; background:var(--gold); margin:0 auto 28px;
   }
-  /* photo slideshow in an arched frame; images crossfade with a slow zoom */
-  .hero-photos{position:relative; width:100%; max-width:330px; margin:0 auto;}
+  /* photo slideshow in a double gold frame; images crossfade with a slow zoom */
+  .hero-photos{position:relative; width:100%; max-width:380px; margin:0 auto;}
   .hero-arch{
     position:relative; aspect-ratio:4/5; overflow:hidden;
-    border-radius:999px 999px 4px 4px;
     border:2px solid var(--gold);
     outline:1px solid var(--gold); outline-offset:8px;
     background:var(--blush);
@@ -164,11 +163,10 @@
     transition:opacity 1.8s ease, transform 8s ease-out;
   }
   .hero-arch img.on{opacity:1; transform:scale(1.1);}
+  /* small accent beside "welcome, y'all" */
   .hero-scissors{
-    grid-area:scissors;
-    display:block; width:100%; max-width:300px; margin:0 auto;
-    transform:rotate(8deg);
-    opacity:.85;
+    width:62px; height:auto;
+    transform:rotate(18deg);
     pointer-events:none; user-select:none;
   }
   @media (prefers-reduced-motion: reduce){
@@ -421,11 +419,10 @@
   }
   @media (max-width:1000px){
     .hero-grid{
-      grid-template-columns:1.2fr 1fr;
-      grid-template-areas:"words words" "photos scissors";
-      gap:44px 24px; padding:56px 32px 80px;
+      grid-template-columns:1fr;
+      grid-template-areas:"words" "photos";
+      gap:44px; padding:56px 32px 80px;
     }
-    .hero-scissors{max-width:250px;}
     .gallery-grid{--cols:3;}
   }
   @media (max-width:860px){
@@ -435,12 +432,12 @@
     .gallery-grid{--cols:2;}
     .hero h1{font-size:2.6rem;}
     .service-card{padding:8px 24px;}
-    .hero-photos{max-width:320px;}
+    .hero-photos{max-width:360px;}
   }
   @media (max-width:640px){
-    .hero-grid{grid-template-columns:1.6fr 1fr; gap:36px 20px;}
-    .hero-photos{max-width:220px;}
-    .hero-scissors{max-width:110px;}
+    .hero-grid{gap:36px;}
+    .hero-photos{max-width:300px;}
+    .hero-scissors{width:48px;}
     .gingham-strip{height:50px; background-size:auto 260px;}
     .nav-links{
       position:absolute; top:100%; left:0; right:0;
@@ -490,7 +487,7 @@
 <section class="hero">
   <div class="hero-grid">
     <div class="hero-inner">
-      <span class="eyebrow-hero">welcome, y'all</span>
+      <span class="eyebrow-hero">welcome, y'all <img class="hero-scissors" src="images/scissors-floral.webp" alt=""></span>
       <h1>Hair that feels like you</h1>
       <div class="hero-rule"></div>
       <p class="lead">Booth stylist at The Blonde Magnolia, specializing in women's cuts and everyday color — right here in South Carolina.</p>
@@ -499,7 +496,6 @@
         <a class="btn-outline" href="#gallery">See My Work</a>
       </div>
     </div>
-    <img class="hero-scissors" src="images/scissors-floral.webp" alt="">
     <!-- Stock photos (Pexels licence, free, no attribution required): 10028673,
          14615061, 3065171, 28994645. Hands and hair only - no faces, so it
          reads as Olivia's chair rather than a big salon. -->
