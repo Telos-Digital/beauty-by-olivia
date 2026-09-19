@@ -31,6 +31,12 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (floral scissors)
+- The hero scissors now use the floral band pattern instead of solid pink. I
+  baked them into `images/scissors-floral.webp` by clipping the floral tile to
+  the scissors' alpha and adding a thin wine outline. Opacity went from 0.55 to
+  0.8 on desktop and to 0.6 on phone, because the pattern is lighter. The old
+  `scissors.webp` is kept but no longer used. Pushed in commit b4f6f9f.
 ### 2026-09-19 (favorites, before & after pairs)
 - Replaced "All" with Olivia's Favorites, which is also the default view. The
   user didn't want the name "Highlight" because it clashes with the hair
