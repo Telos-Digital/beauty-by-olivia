@@ -124,11 +124,18 @@
     overflow:hidden;
     padding:0;
   }
+  /* computer: photos | words | scissors.  tablet & phone: words on top,
+     photos and scissors side by side underneath (see media queries) */
   .hero-grid{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
-    max-width:1080px; margin:0 auto;
+    display:grid; align-items:center;
+    grid-template-columns:0.85fr 1.3fr 0.85fr;
+    grid-template-areas:"photos words scissors";
+    gap:40px;
+    max-width:1240px; margin:0 auto;
     padding:56px 32px 72px;
   }
+  .hero-inner{grid-area:words;}
+  .hero-photos{grid-area:photos;}
   .hero-inner{
     text-align:center;
     max-width:560px;
@@ -143,7 +150,7 @@
     width:70px; height:2px; background:var(--gold); margin:0 auto 28px;
   }
   /* photo slideshow in an arched frame; images crossfade with a slow zoom */
-  .hero-photos{position:relative; width:100%; max-width:360px; margin:0 auto;}
+  .hero-photos{position:relative; width:100%; max-width:330px; margin:0 auto;}
   .hero-arch{
     position:relative; aspect-ratio:4/5; overflow:hidden;
     border-radius:999px 999px 4px 4px;
@@ -158,8 +165,10 @@
   }
   .hero-arch img.on{opacity:1; transform:scale(1.1);}
   .hero-scissors{
-    display:block; width:120px; margin:44px auto 0;
-    transform:rotate(-10deg);
+    grid-area:scissors;
+    display:block; width:100%; max-width:300px; margin:0 auto;
+    transform:rotate(8deg);
+    opacity:.85;
     pointer-events:none; user-select:none;
   }
   @media (prefers-reduced-motion: reduce){
@@ -411,6 +420,12 @@
     .gallery-arrow.next{right:-14px;}
   }
   @media (max-width:1000px){
+    .hero-grid{
+      grid-template-columns:1.2fr 1fr;
+      grid-template-areas:"words words" "photos scissors";
+      gap:44px 24px; padding:56px 32px 80px;
+    }
+    .hero-scissors{max-width:250px;}
     .gallery-grid{--cols:3;}
   }
   @media (max-width:860px){
@@ -420,12 +435,12 @@
     .gallery-grid{--cols:2;}
     .hero h1{font-size:2.6rem;}
     .service-card{padding:8px 24px;}
-    .hero-grid{grid-template-columns:1fr; gap:48px; padding:56px 32px 80px;}
-    .hero-photos{max-width:340px;}
+    .hero-photos{max-width:320px;}
   }
   @media (max-width:640px){
-    .hero-photos{max-width:270px;}
-    .hero-scissors{width:96px; margin-top:34px;}
+    .hero-grid{grid-template-columns:1.6fr 1fr; gap:36px 20px;}
+    .hero-photos{max-width:220px;}
+    .hero-scissors{max-width:110px;}
     .gingham-strip{height:50px; background-size:auto 260px;}
     .nav-links{
       position:absolute; top:100%; left:0; right:0;
@@ -483,17 +498,17 @@
         <a class="btn" href="https://booking.mangomint.com/theblondemagnolia?staffId=36" target="_blank" rel="noopener">Book an Appointment</a>
         <a class="btn-outline" href="#gallery">See My Work</a>
       </div>
-      <img class="hero-scissors" src="images/scissors-floral.webp" alt="">
     </div>
+    <img class="hero-scissors" src="images/scissors-floral.webp" alt="">
     <!-- Stock photos (Pexels licence, free, no attribution required): 10028673,
-         14615061, 3065171, 3993292. Hands and hair only - no faces, so it
+         14615061, 3065171, 28994645. Hands and hair only - no faces, so it
          reads as Olivia's chair rather than a big salon. -->
     <div class="hero-photos" aria-hidden="true">
       <div class="hero-arch" id="heroArch">
         <img class="on" src="images/salon-blowdry.webp" alt="" width="960" height="1200">
         <img src="images/salon-roundbrush.webp" alt="" width="960" height="1200">
         <img src="images/salon-curls.webp" alt="" width="960" height="1200">
-        <img src="images/salon-colorbowl.webp" alt="" width="960" height="1200">
+        <img src="images/salon-spray.webp" alt="" width="960" height="1200">
       </div>
     </div>
   </div>

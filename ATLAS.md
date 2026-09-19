@@ -8,10 +8,11 @@
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
 
 ## Current State
-Live on GitHub Pages with the gingham design. The hero is two columns: the
-words on the left, and on the right an arched, gold-framed slideshow of four
-free stock photos (hands and hair only, no faces) that crossfade with a slow
-zoom. Small floral scissors sit under the hero buttons. Below it: services, the category-slideshow
+Live on GitHub Pages with the gingham design. On a computer the hero has
+three columns: an arched, gold-framed slideshow of four free stock photos
+(hands and hair only, no faces) on the left, the words in the middle, and the
+big floral scissors on the right. On a phone or tablet the words come first,
+with the photos and scissors side by side underneath. Below it: services, the category-slideshow
 gallery (opens on Olivia's Favorites), a placeholder Products I Love section,
 About, and contact.
 
@@ -34,6 +35,16 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (hero layouts, spray photo)
+- The user asked for separate computer and phone layouts. It's one CSS grid
+  with `grid-template-areas`: "photos words scissors" above 1000px, and
+  "words words" / "photos scissors" below that. The scissors are a grid child
+  again, back at full size and tilted, and never overlap the frame. On phones
+  I checked there's a measured gap between the frame and the scissors.
+- The user found the color-bowl photo gross, so it's replaced with
+  `salon-spray.webp` (Pexels 28994645, a hand spraying a bottle onto copper
+  hair from behind, no faces). No visible mist; the only mist close-ups found
+  were skincare or plant shots.
 ### 2026-09-19 (faceless hero photos)
 - The user doesn't want faces or stylists in the stock photos, because it's a
   one-woman business, not a salon company. Removed `salon-stylist` and
