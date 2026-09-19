@@ -1,28 +1,27 @@
 ## Meta
 | Field | Value |
 | Project | Beauty by Olivia |
-| Last Active | 2026-09-10 |
+| Last Active | 2026-09-19 |
 | Status | shipping |
 | Location | /home/wner/beauty-by-olivia |
 | Repo | Telos-Digital/beauty-by-olivia (public) |
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
 
 ## Current State
-Live on GitHub Pages, verified by HTTP 200 and a render check on the deployed
-URL. One static page, no build step: hero, service menu with three haircut
-options and three colour-maintenance plans, a five-tile gallery, an about
-section, and an inverted contact block. Booking runs through Olivia's real
-Mangomint page at The Blonde Magnolia. Pushed exactly as designed in the
-mockup, with no edits to the markup.
+Live on GitHub Pages with the gingham design. The gallery now has category
+filter buttons for Olivia's eight types of work. Three real photos are sorted
+into categories, and every empty category shows a patterned "photos coming soon"
+tile that goes away once it has a photo. Booking still runs through her
+Mangomint page.
 
 ## Next Action
-Get Olivia's Facebook profile URL so the social mention becomes a real link, and
-decide on the `beautybyolivia.com` domain.
+Add the new batch of photos the user is sending, each tagged with its category.
 
 ## Blockers
 None technical. Everything outstanding needs information from Olivia.
 
 ## Open Questions
+- Is "black gloss" right under Dimensional Brunettes? It was a guess.
 - Facebook profile URL for Olivia Dixon, to turn the mention into a link.
 - More photos? Three are up. Six would fill two rows evenly in both designs.
 - Does she want a phone number on the site at all, or is booking enough?
@@ -31,6 +30,17 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (gallery categories)
+- Olivia asked for her work to be grouped by category: Blonding, Highlights &
+  Lowlights, Balayage, Lived-In Color, Dimensional Brunettes, Fashion Color,
+  Haircuts & Styling, and Before & Afters.
+- Added filter buttons above the gallery. The grid is now four columns on desktop.
+  Photos are tagged with `data-category`, and a script builds a patterned
+  placeholder tile for any category without a photo. Adding a photo is one
+  `<div class="gallery-item" data-category="...">` line.
+- Tagged the existing photos. Caramel is balayage and honey is highlights. Black
+  gloss went under brunettes as a guess, still to be confirmed.
+- Pushed in commit 8d85d0b. New photos from the user come next.
 ### 2026-09-10 (correct design promoted)
 - **The wrong design had been live all along.** The user clarified that the
   editorial mockup was a throwaway and the gingham one is the real site. Promoted
