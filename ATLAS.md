@@ -36,6 +36,12 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (roomier hero text, scissors closer)
+- Computer hero: the photo column is 0.7fr against 1.3fr for the words, the
+  text max-width is 540px (the lead paragraph now fits on two lines), and the
+  scissors sit at `left:calc(100% - 12px)`, tucked into the centered text's
+  empty right margin, with a 170px reserve. Swept 1440 to 761 wide: no
+  overlap and no overflow.
 ### 2026-09-19 (tall upright scissors)
 - The user said the small scissors looked like an emoji. "welcome, y'all" is
   back to centered on its own. The scissors are baked upright with blades up
