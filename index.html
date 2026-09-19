@@ -122,27 +122,17 @@
   .hero{
     position:relative;
     overflow:hidden;
+    padding:0;
   }
-  .hero-scissors{
-    position:absolute;
-    z-index:0;
-    bottom:20px;
-    right:20px;
-    width:420px;
-    max-width:none;
-    transform:rotate(8deg);
-    opacity:0.8;
-    pointer-events:none;
-    user-select:none;
-  }
-  .hero-check{
-    height:120px;
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+    max-width:1080px; margin:0 auto;
+    padding:56px 32px 72px;
   }
   .hero-inner{
     text-align:center;
-    max-width:640px;
+    max-width:560px;
     margin:0 auto;
-    padding:64px 32px 88px;
     position:relative; z-index:1;
   }
   .eyebrow-hero{font-family:var(--script); font-size:1.7rem; color:var(--bubblegum); margin-bottom:6px;}
@@ -151,6 +141,32 @@
   .hero-ctas{display:flex; gap:18px; flex-wrap:wrap; justify-content:center;}
   .hero-rule{
     width:70px; height:2px; background:var(--gold); margin:0 auto 28px;
+  }
+  /* photo slideshow in an arched frame; images crossfade with a slow zoom */
+  .hero-photos{position:relative; width:100%; max-width:360px; margin:0 auto;}
+  .hero-arch{
+    position:relative; aspect-ratio:4/5; overflow:hidden;
+    border-radius:999px 999px 4px 4px;
+    border:2px solid var(--gold);
+    outline:1px solid var(--gold); outline-offset:8px;
+    background:var(--blush);
+  }
+  .hero-arch img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    opacity:0; transform:scale(1.02);
+    transition:opacity 1.8s ease, transform 8s ease-out;
+  }
+  .hero-arch img.on{opacity:1; transform:scale(1.1);}
+  .hero-scissors{
+    position:absolute; z-index:2;
+    left:-90px; bottom:-40px;
+    width:210px; max-width:none;
+    transform:rotate(-12deg);
+    pointer-events:none; user-select:none;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-arch img{transition:opacity 1s ease; transform:none;}
+    .hero-arch img.on{transform:none;}
   }
 
   /* SECTION HEADERS */
@@ -406,10 +422,12 @@
     .gallery-grid{--cols:2;}
     .hero h1{font-size:2.6rem;}
     .service-card{padding:8px 24px;}
-    .hero-scissors{width:320px; right:10px; bottom:15px;}
+    .hero-grid{grid-template-columns:1fr; gap:48px; padding:56px 32px 80px;}
+    .hero-photos{max-width:340px;}
   }
   @media (max-width:640px){
-    .hero-scissors{width:220px; right:5px; bottom:10px; opacity:.6;}
+    .hero-photos{max-width:270px;}
+    .hero-scissors{width:150px; left:-50px; bottom:-30px;}
     .gingham-strip{height:50px; background-size:auto 260px;}
     .nav-links{
       position:absolute; top:100%; left:0; right:0;
@@ -423,7 +441,7 @@
     .nav-links.open{display:flex;}
     .menu-toggle{display:block;}
     section{padding:56px 0;}
-    .hero-inner{padding:48px 24px 64px;}
+    .hero-grid{padding:44px 24px 64px;}
     .hero h1{font-size:2.1rem;}
     .gallery-grid{--cols:2; --gap:18px;}
     .gallery-grid > .ba-pair{flex-basis:100%;}
@@ -457,15 +475,27 @@
 <div class="gingham-strip"></div>
 
 <section class="hero">
-  <img class="hero-scissors" src="images/scissors-floral.webp" alt="" />
-  <div class="hero-inner">
-    <span class="eyebrow-hero">welcome, y'all</span>
-    <h1>Hair that feels like you</h1>
-    <div class="hero-rule"></div>
-    <p class="lead">Booth stylist at The Blonde Magnolia, specializing in women's cuts and everyday color — right here in South Carolina.</p>
-    <div class="hero-ctas">
-      <a class="btn" href="https://booking.mangomint.com/theblondemagnolia?staffId=36" target="_blank" rel="noopener">Book an Appointment</a>
-      <a class="btn-outline" href="#gallery">See My Work</a>
+  <div class="hero-grid">
+    <div class="hero-inner">
+      <span class="eyebrow-hero">welcome, y'all</span>
+      <h1>Hair that feels like you</h1>
+      <div class="hero-rule"></div>
+      <p class="lead">Booth stylist at The Blonde Magnolia, specializing in women's cuts and everyday color — right here in South Carolina.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="https://booking.mangomint.com/theblondemagnolia?staffId=36" target="_blank" rel="noopener">Book an Appointment</a>
+        <a class="btn-outline" href="#gallery">See My Work</a>
+      </div>
+    </div>
+    <!-- Stock photos (free licence, no attribution required): Pexels 10028673,
+         Unsplash WXmHwPcFamo (Adam Winger), Pexels 3065171, Pexels 3993312. -->
+    <div class="hero-photos" aria-hidden="true">
+      <div class="hero-arch" id="heroArch">
+        <img class="on" src="images/salon-blowdry.webp" alt="" width="960" height="1200">
+        <img src="images/salon-stylist.webp" alt="" width="960" height="1200">
+        <img src="images/salon-curls.webp" alt="" width="960" height="1200">
+        <img src="images/salon-color.webp" alt="" width="960" height="1200">
+      </div>
+      <img class="hero-scissors" src="images/scissors-floral.webp" alt="">
     </div>
   </div>
 </section>
@@ -676,6 +706,15 @@
   const links = document.getElementById('navLinks');
   toggle.addEventListener('click', () => links.classList.toggle('open'));
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // Hero slideshow: crossfade to the next photo every few seconds.
+  const heroImgs = document.querySelectorAll('#heroArch img');
+  let heroIndex = 0;
+  setInterval(() => {
+    heroImgs[heroIndex].classList.remove('on');
+    heroIndex = (heroIndex + 1) % heroImgs.length;
+    heroImgs[heroIndex].classList.add('on');
+  }, 5500);
 
   // Gallery categories: add a patterned placeholder for any category without
   // photos yet, then filter tiles when a category button is pressed.

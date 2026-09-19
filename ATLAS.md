@@ -8,11 +8,12 @@
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
 
 ## Current State
-Live on GitHub Pages with the gingham design. The gallery is a category
-slideshow that opens on Olivia's Favorites, with prev/next arrows, swipe, a
-direction-aware slide transition, and a subtle "+ all categories" list. A
-"Products I Love" section has four placeholder cards (wash day, color care,
-styling, treatment) with no product names yet.
+Live on GitHub Pages with the gingham design. The hero is two columns: the
+words on the left, and on the right an arched, gold-framed slideshow of four
+free stock salon photos that crossfade with a slow zoom, with the floral
+scissors on the frame's corner. Below it: services, the category-slideshow
+gallery (opens on Olivia's Favorites), a placeholder Products I Love section,
+About, and contact.
 
 ## Next Action
 Add the new photos (with category, favorite, and before/after pairing) and
@@ -33,6 +34,19 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (hero photo slideshow)
+- Added four free stock photos to the hero, cropped to 4:5 WebP at 960x1200
+  (~60-120 KB each) in `images/salon-*.webp`. Sources: Pexels 10028673
+  (blow-dry with round brush), Unsplash WXmHwPcFamo by Adam Winger (stylist
+  blow-drying), Pexels 3065171 (curls), and Pexels 3993312 (color
+  application). Both licences are free for commercial use with no attribution
+  required; the IDs are recorded in an HTML comment.
+- They crossfade every 5.5 seconds inside an arched gold frame, echoing the
+  About monogram. The scissors moved onto the frame's corner.
+- The user doesn't want to hard-refresh after pushes. GitHub Pages sends
+  `max-age=600` and that header can't be changed, so the page can be up to 10
+  minutes stale for recent visitors only. Stopped telling the user to press
+  Ctrl+F5.
 ### 2026-09-19 (smoother slideshow, products)
 - The "+ all categories" toggle is now small, soft text with no box.
 - Slideshow transition: the old set slides out with a fade, the new set
