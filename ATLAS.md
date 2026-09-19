@@ -11,8 +11,8 @@
 Live on GitHub Pages with the gingham design. The hero on a computer has the
 photo slideshow on the left in a rectangular double-gold frame, with four
 faceless stock photos, and the words on the right. On a phone the photos go
-under the words. The floral scissors are a small accent beside
-"welcome, y'all". Below that: services, the category-slideshow gallery, a
+under the words. The floral scissors are an accent beside
+"welcome, y'all" (108px on computer, 78px on phone). Below that: services, the category-slideshow gallery, a
 placeholder Products I Love section, About, and contact.
 
 ## Next Action
@@ -34,6 +34,11 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (bigger scissors accent)
+- The user wanted the scissors bigger: 108px on computer, 78px on phone. A
+  negative top margin lets them grow into spare space above without pushing
+  the headline down. The first try overlapped the "f" in "feels", so they got
+  a small bottom margin to stay clear of the headline.
 ### 2026-09-19 (rectangle photos, scissors as accent)
 - The user said the phone layout looked horrible with the scissors as their
   own element beside the photos. The scissors are now a 62px accent (48px on
