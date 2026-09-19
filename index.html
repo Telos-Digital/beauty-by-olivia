@@ -190,23 +190,30 @@
 
   /* GALLERY */
   .gallery-filters{
-    display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
-    max-width:820px; margin:-22px auto 44px;
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
+    gap:6px 30px;
+    max-width:860px; margin:-22px auto 48px;
   }
   .gallery-filters button{
-    font-family:var(--serif); font-style:italic; font-size:1.02rem;
-    color:var(--wine); background:var(--cream);
-    border:1.5px solid var(--blush-deep); border-radius:999px;
-    padding:6px 16px; cursor:pointer;
-    transition:background .2s, border-color .2s, color .2s;
+    font-family:var(--serif); font-style:italic; font-size:1.08rem;
+    color:var(--wine-soft); background:none; border:none;
+    padding:4px 2px; cursor:pointer;
+    border-bottom:1.5px solid transparent;
+    transition:color .2s, border-color .2s;
   }
-  .gallery-filters button:hover{border-color:var(--wine);}
-  .gallery-filters button[aria-pressed="true"]{background:var(--wine); border-color:var(--wine); color:var(--cream);}
+  .gallery-filters button:hover{color:var(--bubblegum);}
+  .gallery-filters button[aria-pressed="true"]{color:var(--wine);}
+  /* underline only the words, not the separator dot */
+  .gallery-filters button span{border-bottom:1.5px solid transparent; padding-bottom:2px;}
+  .gallery-filters button[aria-pressed="true"] span{border-color:var(--wine);}
+  .gallery-filters button.fav span{font-family:var(--script); font-style:normal; font-size:1.3rem; color:var(--bubblegum);}
+  /* flex rather than grid so a short row (a category with one photo) sits centered */
   .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(4, minmax(0,1fr));
-    gap:28px;
+    --cols:4; --gap:28px;
+    display:flex; flex-wrap:wrap; justify-content:center;
+    gap:var(--gap);
   }
+  .gallery-grid > *{flex:0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));}
   .gallery-item{
     aspect-ratio:3/4;
     background:var(--white);
@@ -257,6 +264,26 @@
     width:100%;
   }
   .gallery-item[hidden]{display:none;}
+  /* before & after: always a pair, side by side, with a rule between */
+  .gallery-grid > .ba-pair{
+    flex-basis:calc((100% - var(--gap)) / 2);
+    aspect-ratio:auto;
+    transform:none;
+  }
+  .ba-photos{
+    display:grid; grid-template-columns:1fr 2px 1fr;
+    aspect-ratio:3/2;
+  }
+  .ba-photos .rule{background:var(--wine);}
+  .ba-half{position:relative; overflow:hidden; display:flex;}
+  .ba-half .gallery-photo{width:100%; height:100%;}
+  .ba-half img.gallery-photo{height:100%;}
+  .ba-half b{
+    position:absolute; left:50%; bottom:10px; transform:translateX(-50%);
+    font-family:var(--serif); font-style:italic; font-weight:500; font-size:.95rem;
+    background:var(--cream); color:var(--wine);
+    padding:2px 12px; border:1px solid var(--blush-deep);
+  }
   .gallery-item span{font-family:var(--script); font-size:1.1rem; text-align:center; color:var(--wine-soft); padding-top:10px;}
 
   /* ABOUT */
@@ -312,12 +339,12 @@
   }
 
   @media (max-width:1000px){
-    .gallery-grid{grid-template-columns:repeat(3, minmax(0,1fr));}
+    .gallery-grid{--cols:3;}
   }
   @media (max-width:860px){
     .about-inner{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:1fr;}
-    .gallery-grid{grid-template-columns:repeat(2, 1fr);}
+    .gallery-grid{--cols:2;}
     .hero h1{font-size:2.6rem;}
     .service-card{padding:8px 24px;}
     .hero-scissors{width:320px; right:10px; bottom:15px;}
@@ -339,7 +366,8 @@
     section{padding:56px 0;}
     .hero-inner{padding:48px 24px 64px;}
     .hero h1{font-size:2.1rem;}
-    .gallery-grid{grid-template-columns:repeat(2, 1fr); gap:18px;}
+    .gallery-grid{--cols:2; --gap:18px;}
+    .gallery-grid > .ba-pair{flex-basis:100%;}
     .service-row{flex-direction:column; align-items:flex-start; gap:4px;}
     .monogram{width:170px; height:170px;}
     .monogram span{font-size:3.6rem;}
@@ -449,22 +477,33 @@
       <p>A look at cuts, color, and styling from the chair.</p>
     </div>
     <div class="gallery-filters" id="galleryFilters" role="group" aria-label="Filter by type of work">
-      <button type="button" data-filter="all" aria-pressed="true">All</button>
-      <button type="button" data-filter="blonding" aria-pressed="false">Blonding</button>
-      <button type="button" data-filter="highlights" aria-pressed="false">Highlights &amp; Lowlights</button>
-      <button type="button" data-filter="balayage" aria-pressed="false">Balayage</button>
-      <button type="button" data-filter="lived-in" aria-pressed="false">Lived-In Color</button>
-      <button type="button" data-filter="brunettes" aria-pressed="false">Dimensional Brunettes</button>
-      <button type="button" data-filter="fashion" aria-pressed="false">Fashion Color</button>
-      <button type="button" data-filter="cuts" aria-pressed="false">Haircuts &amp; Styling</button>
-      <button type="button" data-filter="before-after" aria-pressed="false">Before &amp; Afters</button>
+      <button type="button" class="fav" data-filter="favorites" aria-pressed="true"><span>Olivia's Favorites</span></button>
+      <button type="button" data-filter="blonding" aria-pressed="false"><span>Blonding</span></button>
+      <button type="button" data-filter="highlights" aria-pressed="false"><span>Highlights &amp; Lowlights</span></button>
+      <button type="button" data-filter="balayage" aria-pressed="false"><span>Balayage</span></button>
+      <button type="button" data-filter="lived-in" aria-pressed="false"><span>Lived-In Color</span></button>
+      <button type="button" data-filter="brunettes" aria-pressed="false"><span>Dimensional Brunettes</span></button>
+      <button type="button" data-filter="fashion" aria-pressed="false"><span>Fashion Color</span></button>
+      <button type="button" data-filter="cuts" aria-pressed="false"><span>Haircuts &amp; Styling</span></button>
+      <button type="button" data-filter="before-after" aria-pressed="false"><span>Before &amp; Afters</span></button>
     </div>
-    <!-- Each photo carries data-category matching a filter above. Categories
-         with no photos get a patterned "coming soon" tile, built by the script. -->
+    <!-- Each photo carries data-category matching a filter above; add
+         data-favorite to feature it under Olivia's Favorites. Categories with
+         no photos get a patterned "coming soon" tile, built by the script. -->
     <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-item" data-category="balayage"><img class="gallery-photo" src="images/caramel-balayage.webp" width="1000" height="1333" loading="lazy" alt="Long wavy hair in a warm caramel balayage, photographed from behind at The Blonde Magnolia"><span>caramel balayage</span></div>
-      <div class="gallery-item" data-category="brunettes"><img class="gallery-photo" src="images/black-gloss.webp" width="1000" height="1333" loading="lazy" alt="Long straight black hair with a high-shine gloss, photographed from behind at The Blonde Magnolia"><span>black gloss</span></div>
-      <div class="gallery-item" data-category="highlights"><img class="gallery-photo" src="images/honey-highlights.webp" width="1000" height="1333" loading="lazy" alt="Long wavy hair in honey and copper highlights with a face-framing cut, styled at The Blonde Magnolia"><span>honey highlights</span></div>
+      <div class="gallery-item" data-category="balayage" data-favorite><img class="gallery-photo" src="images/caramel-balayage.webp" width="1000" height="1333" loading="lazy" alt="Long wavy hair in a warm caramel balayage, photographed from behind at The Blonde Magnolia"><span>caramel balayage</span></div>
+      <div class="gallery-item" data-category="brunettes" data-favorite><img class="gallery-photo" src="images/black-gloss.webp" width="1000" height="1333" loading="lazy" alt="Long straight black hair with a high-shine gloss, photographed from behind at The Blonde Magnolia"><span>black gloss</span></div>
+      <div class="gallery-item" data-category="highlights" data-favorite><img class="gallery-photo" src="images/honey-highlights.webp" width="1000" height="1333" loading="lazy" alt="Long wavy hair in honey and copper highlights with a face-framing cut, styled at The Blonde Magnolia"><span>honey highlights</span></div>
+      <!-- Before & afters: swap each patterned half for
+           <img class="gallery-photo" src="images/..." alt="..."> -->
+      <div class="gallery-item ba-pair" data-category="before-after">
+        <div class="ba-photos"><div class="ba-half"><div class="gallery-photo soon pattern-1"></div><b>before</b></div><div class="rule"></div><div class="ba-half"><div class="gallery-photo soon pattern-3"></div><b>after</b></div></div>
+        <span>photos coming soon</span>
+      </div>
+      <div class="gallery-item ba-pair" data-category="before-after">
+        <div class="ba-photos"><div class="ba-half"><div class="gallery-photo soon pattern-2"></div><b>before</b></div><div class="rule"></div><div class="ba-half"><div class="gallery-photo soon pattern-4"></div><b>after</b></div></div>
+        <span>photos coming soon</span>
+      </div>
     </div>
   </div>
 </section>
@@ -530,7 +569,7 @@
   let pattern = 0;
   buttons.forEach(btn => {
     const cat = btn.dataset.filter;
-    if (cat === 'all' || grid.querySelector(`[data-category="${cat}"]`)) return;
+    if (cat === 'favorites' || grid.querySelector(`[data-category="${cat}"]`)) return;
     const tile = document.createElement('div');
     tile.className = 'gallery-item';
     tile.dataset.category = cat;
@@ -539,13 +578,15 @@
     tile.querySelector('span').textContent = btn.textContent.toLowerCase();
     grid.appendChild(tile);
   });
-  buttons.forEach(btn => btn.addEventListener('click', () => {
-    const cat = btn.dataset.filter;
-    buttons.forEach(b => b.setAttribute('aria-pressed', b === btn));
+  function showCategory(cat) {
+    buttons.forEach(b => b.setAttribute('aria-pressed', b.dataset.filter === cat));
     grid.querySelectorAll('.gallery-item').forEach(tile => {
-      tile.hidden = cat !== 'all' && tile.dataset.category !== cat;
+      tile.hidden = cat === 'favorites' ? !tile.hasAttribute('data-favorite')
+                                        : tile.dataset.category !== cat;
     });
-  }));
+  }
+  buttons.forEach(btn => btn.addEventListener('click', () => showCategory(btn.dataset.filter)));
+  showCategory('favorites');
 </script>
 
 </body>
