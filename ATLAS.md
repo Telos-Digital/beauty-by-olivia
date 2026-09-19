@@ -8,11 +8,11 @@
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
 
 ## Current State
-Live on GitHub Pages with the gingham design. The gallery now has category
-filter buttons for Olivia's eight types of work. Three real photos are sorted
-into categories, and every empty category shows a patterned "photos coming soon"
-tile that goes away once it has a photo. Booking still runs through her
-Mangomint page.
+Live on GitHub Pages with the gingham design. The gallery opens on "Olivia's
+Favorites", showing photos marked `data-favorite`, and has plain-text tabs for
+her eight categories. Before & Afters appear as pairs of two photos side by
+side with a line between them; two placeholder pairs are up. Every empty
+category shows a patterned "coming soon" tile.
 
 ## Next Action
 Add the new batch of photos the user is sending, each tagged with its category.
@@ -21,6 +21,7 @@ Add the new batch of photos the user is sending, each tagged with its category.
 None technical. Everything outstanding needs information from Olivia.
 
 ## Open Questions
+- Keep the name "Olivia's Favorites"? The user was unsure about naming it.
 - Is "black gloss" right under Dimensional Brunettes? It was a guess.
 - Facebook profile URL for Olivia Dixon, to turn the mention into a link.
 - More photos? Three are up. Six would fill two rows evenly in both designs.
@@ -30,6 +31,18 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (favorites, before & after pairs)
+- Replaced "All" with Olivia's Favorites, which is also the default view. The
+  user didn't want the name "Highlight" because it clashes with the hair
+  service. All three current photos are marked as favorites.
+- Before & Afters became `.ba-pair` cards: two halves side by side with a wine
+  line between them, labeled before/after. There are two placeholder pairs,
+  which stack one per row on a phone.
+- The user disliked the pill-shaped tab borders, so the tabs are now plain
+  italic text with an underline on the selected one. Tried gold dot separators
+  first and dropped them, because each wrapped line started with a stray dot.
+- The gallery layout switched from CSS grid to flex so a category with a
+  single tile shows it centered. Pushed in commit 5137b02.
 ### 2026-09-19 (gallery categories)
 - Olivia asked for her work to be grouped by category: Blonding, Highlights &
   Lowlights, Balayage, Lived-In Color, Dimensional Brunettes, Fashion Color,
