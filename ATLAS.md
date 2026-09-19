@@ -8,19 +8,21 @@
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
 
 ## Current State
-Live on GitHub Pages with the gingham design. The gallery works as a category
-slideshow: it shows one category at a time by name ("1 of 9"), prev/next
-arrows and swiping step through them, and a "+ all categories" button opens
-the full list. It opens on Olivia's Favorites. Before & Afters are pairs of
-photos side by side. The hero scissors use the floral band pattern.
+Live on GitHub Pages with the gingham design. The gallery is a category
+slideshow that opens on Olivia's Favorites, with prev/next arrows, swipe, a
+direction-aware slide transition, and a subtle "+ all categories" list. A
+"Products I Love" section has four placeholder cards (wash day, color care,
+styling, treatment) with no product names yet.
 
 ## Next Action
-Add the new batch of photos the user is sending, each tagged with its category.
+Add the new photos (with category, favorite, and before/after pairing) and
+Olivia's real product picks.
 
 ## Blockers
 None technical. Everything outstanding needs information from Olivia.
 
 ## Open Questions
+- Which products does Olivia actually use? The four product types are a guess.
 - Keep the name "Olivia's Favorites"? The user was unsure about naming it.
 - Is "black gloss" right under Dimensional Brunettes? It was a guess.
 - Facebook profile URL for Olivia Dixon, to turn the mention into a link.
@@ -31,6 +33,18 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (smoother slideshow, products)
+- The "+ all categories" toggle is now small, soft text with no box.
+- Slideshow transition: the old set slides out with a fade, the new set
+  slides in from the direction of travel, and the stage height eases between
+  categories. A step counter stops rapid clicks from tangling, and motion is
+  skipped under prefers-reduced-motion.
+- Added a "Products I Love" section on blush between the gallery and About,
+  plus a Products nav link. Four text-only cards say "Her pick coming soon",
+  with no invented brand names.
+- Pushed the code and these notes together, so Pages runs one build. Last time
+  a second push cancelled the first build and delayed going live by a few
+  minutes.
 ### 2026-09-19 (category slideshow)
 - The user found the category row crowded. It was fine with borders, just not
   pill-shaped ones. The gallery now shows one category at a time: the current

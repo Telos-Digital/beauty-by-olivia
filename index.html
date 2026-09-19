@@ -197,18 +197,13 @@
   .gallery-current{font-family:var(--script); font-size:2rem; color:var(--bubblegum); line-height:1.2;}
   .gallery-count{font-family:var(--serif); font-style:italic; font-size:.95rem; color:var(--wine-soft);}
   .gallery-toggle{
-    display:inline-flex; align-items:center; gap:10px;
-    font-family:var(--serif); font-style:italic; font-size:1.02rem; color:var(--wine);
-    background:none; border:none; cursor:pointer; padding:4px;
+    display:inline-flex; align-items:center; gap:5px;
+    font-family:var(--serif); font-style:italic; font-size:.9rem; color:var(--wine-soft);
+    background:none; border:none; cursor:pointer; padding:2px 4px;
+    opacity:.75; transition:opacity .2s, color .2s;
   }
-  .gallery-toggle .plus{
-    display:inline-flex; align-items:center; justify-content:center;
-    width:26px; height:26px;
-    border:1.5px solid var(--wine); color:var(--wine);
-    font-style:normal; font-size:1.2rem; line-height:1;
-    transition:background .2s, color .2s;
-  }
-  .gallery-toggle:hover .plus{background:var(--wine); color:var(--cream);}
+  .gallery-toggle:hover, .gallery-toggle[aria-expanded="true"]{opacity:1; color:var(--wine);}
+  .gallery-toggle .plus{font-style:normal; font-size:1rem; line-height:1;}
   .gallery-filters{
     display:flex; flex-wrap:wrap; justify-content:center; gap:10px;
     max-width:820px; margin:0 auto 40px;
@@ -237,8 +232,18 @@
   .gallery-arrow:hover{background:var(--wine); color:var(--cream);}
   .gallery-arrow.prev{left:-72px;}
   .gallery-arrow.next{right:-72px;}
-  .gallery-grid.fade{animation:galleryFade .35s ease;}
-  @keyframes galleryFade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+  /* slideshow motion: the old set glides out, the stage eases to the new
+     height, and the new set glides in from the side you're heading toward */
+  .gallery-stage{transition:height .45s cubic-bezier(.4,0,.2,1);}
+  .gallery-grid, .gallery-current, .gallery-count{
+    transition:opacity .28s ease, transform .28s cubic-bezier(.4,0,.2,1);
+  }
+  .gallery-grid.is-out{opacity:0; transform:translateX(calc(var(--dir, 1) * -40px));}
+  .gallery-grid.is-in{opacity:0; transform:translateX(calc(var(--dir, 1) * 40px)); transition:none;}
+  .gallery-current.is-out, .gallery-count.is-out{opacity:0;}
+  @media (prefers-reduced-motion: reduce){
+    .gallery-stage, .gallery-grid, .gallery-current, .gallery-count{transition:none;}
+  }
   /* flex rather than grid so a short row (a category with one photo) sits centered */
   .gallery-grid{
     --cols:4; --gap:28px;
@@ -318,6 +323,23 @@
   }
   .gallery-item span{font-family:var(--script); font-size:1.1rem; text-align:center; color:var(--wine-soft); padding-top:10px;}
 
+  /* PRODUCTS - simple text cards until there are product photos */
+  .products{background:var(--blush);}
+  .product-grid{
+    display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:22px;
+    max-width:980px; margin:0 auto;
+  }
+  .product-card{
+    background:var(--cream);
+    border:1px solid var(--gold);
+    padding:30px 22px 28px;
+    text-align:center;
+  }
+  .product-card .type{font-family:var(--script); font-size:1.35rem; color:var(--bubblegum); display:block; margin-bottom:6px;}
+  .product-card h3{font-size:1.3rem; font-style:italic; margin-bottom:10px;}
+  .product-card p{font-size:.92rem; color:var(--wine-soft);}
+  .product-card .rule{width:36px; height:1.5px; background:var(--gold); margin:0 auto 12px;}
+
   /* ABOUT */
   .about{background:var(--cream);}
   .about-inner{
@@ -378,6 +400,7 @@
     .gallery-grid{--cols:3;}
   }
   @media (max-width:860px){
+    .product-grid{grid-template-columns:repeat(2, minmax(0,1fr));}
     .about-inner{grid-template-columns:1fr;}
     .contact-grid{grid-template-columns:1fr;}
     .gallery-grid{--cols:2;}
@@ -406,6 +429,7 @@
     .gallery-grid > .ba-pair{flex-basis:100%;}
     .service-row{flex-direction:column; align-items:flex-start; gap:4px;}
     .monogram{width:170px; height:170px;}
+    .product-grid{grid-template-columns:1fr;}
     .gallery-arrow{width:36px; height:36px; font-size:1.4rem; background:rgba(255,251,247,.92);}
     .gallery-arrow.prev{left:-10px;}
     .gallery-arrow.next{right:-10px;}
@@ -422,6 +446,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#services">Services</a>
       <a href="#gallery">Gallery</a>
+      <a href="#products">Products</a>
       <a href="#about">About</a>
       <a href="#contact">Location</a>
       <a class="btn" href="https://booking.mangomint.com/theblondemagnolia?staffId=36" target="_blank" rel="noopener">Book Now</a>
@@ -556,6 +581,48 @@
   </div>
 </section>
 
+<div class="scallop scallop-blush"></div>
+
+<!-- Products Olivia likes. Swap each "Her pick coming soon" for the product
+     name, and the line under it for a sentence on why she loves it. -->
+<section class="products" id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">on her shelf</span>
+      <h2>Products I Love</h2>
+      <p>The things I reach for in the chair — and the ones I send clients home with.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <span class="type">wash day</span>
+        <div class="rule"></div>
+        <h3>Her pick coming soon</h3>
+        <p>The shampoo &amp; conditioner I recommend most.</p>
+      </div>
+      <div class="product-card">
+        <span class="type">color care</span>
+        <div class="rule"></div>
+        <h3>Her pick coming soon</h3>
+        <p>What keeps blondes bright and brunettes glossy between visits.</p>
+      </div>
+      <div class="product-card">
+        <span class="type">styling</span>
+        <div class="rule"></div>
+        <h3>Her pick coming soon</h3>
+        <p>My go-to for smooth blowouts and soft waves.</p>
+      </div>
+      <div class="product-card">
+        <span class="type">treatment</span>
+        <div class="rule"></div>
+        <h3>Her pick coming soon</h3>
+        <p>A little extra love for dry or damaged hair.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="scallop scallop-cream scallop-flip"></div>
+
 <section class="about" id="about">
   <div class="wrap about-inner">
     <div class="monogram"><span>O</span></div>
@@ -635,9 +702,12 @@
   const listToggle = document.getElementById('galleryToggle');
   const plus = listToggle.querySelector('.plus');
   let index = 0;
-  function showCategory(i, animate = true) {
-    index = (i + order.length) % order.length;
-    const btn = order[index], cat = btn.dataset.filter;
+  const stage = grid.parentElement;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const OUT_MS = 280;
+  let step = 0;   // bumps on every change so a quick double-tap can't tangle two animations
+  function swapTo(btn) {
+    const cat = btn.dataset.filter;
     buttons.forEach(b => b.setAttribute('aria-pressed', b === btn));
     grid.querySelectorAll('.gallery-item').forEach(tile => {
       tile.hidden = cat === 'favorites' ? !tile.hasAttribute('data-favorite')
@@ -645,10 +715,38 @@
     });
     current.textContent = btn.textContent;
     count.textContent = `${index + 1} of ${order.length}`;
-    if (animate) { grid.classList.remove('fade'); void grid.offsetWidth; grid.classList.add('fade'); }
   }
+  function showCategory(i, animate = true, dir = 1) {
+    index = (i + order.length) % order.length;
+    const btn = order[index], mine = ++step;
+    if (!animate || reduceMotion.matches) { swapTo(btn); return; }
+    grid.style.setProperty('--dir', dir);
+    const from = stage.offsetHeight;
+    stage.style.height = from + 'px';
+    grid.classList.remove('is-in');
+    [grid, current, count].forEach(el => el.classList.add('is-out'));
+    setTimeout(() => {
+      if (mine !== step) return;
+      swapTo(btn);
+      grid.classList.remove('is-out');
+      grid.classList.add('is-in');
+      stage.style.height = 'auto';
+      const target = stage.offsetHeight;
+      stage.style.height = from + 'px';
+      void stage.offsetHeight;
+      requestAnimationFrame(() => {
+        if (mine !== step) return;
+        stage.style.height = target === from ? '' : target + 'px';
+        grid.classList.remove('is-in');
+        [current, count].forEach(el => el.classList.remove('is-out'));
+      });
+    }, OUT_MS);
+  }
+  stage.addEventListener('transitionend', e => {
+    if (e.target === stage && e.propertyName === 'height') stage.style.height = '';
+  });
   order.forEach((btn, i) => btn.addEventListener('click', () => {
-    showCategory(i);
+    showCategory(i, true, i >= index ? 1 : -1);
     filterList.hidden = true;
     listToggle.setAttribute('aria-expanded', 'false');
     plus.textContent = '+';
@@ -658,14 +756,14 @@
     listToggle.setAttribute('aria-expanded', String(!filterList.hidden));
     plus.textContent = filterList.hidden ? '+' : '\u2212';
   });
-  document.getElementById('galleryPrev').addEventListener('click', () => showCategory(index - 1));
-  document.getElementById('galleryNext').addEventListener('click', () => showCategory(index + 1));
+  document.getElementById('galleryPrev').addEventListener('click', () => showCategory(index - 1, true, -1));
+  document.getElementById('galleryNext').addEventListener('click', () => showCategory(index + 1, true, 1));
   let touchX = null;
   grid.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, {passive: true});
   grid.addEventListener('touchend', e => {
     if (touchX === null) return;
     const dx = e.changedTouches[0].clientX - touchX;
-    if (Math.abs(dx) > 50) showCategory(index + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 50) showCategory(index + (dx < 0 ? 1 : -1), true, dx < 0 ? 1 : -1);
     touchX = null;
   });
   showCategory(0, false);
