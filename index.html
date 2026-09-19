@@ -158,10 +158,8 @@
   }
   .hero-arch img.on{opacity:1; transform:scale(1.1);}
   .hero-scissors{
-    position:absolute; z-index:2;
-    left:-90px; bottom:-40px;
-    width:210px; max-width:none;
-    transform:rotate(-12deg);
+    display:block; width:120px; margin:44px auto 0;
+    transform:rotate(-10deg);
     pointer-events:none; user-select:none;
   }
   @media (prefers-reduced-motion: reduce){
@@ -427,7 +425,7 @@
   }
   @media (max-width:640px){
     .hero-photos{max-width:270px;}
-    .hero-scissors{width:150px; left:-50px; bottom:-30px;}
+    .hero-scissors{width:96px; margin-top:34px;}
     .gingham-strip{height:50px; background-size:auto 260px;}
     .nav-links{
       position:absolute; top:100%; left:0; right:0;
@@ -485,17 +483,18 @@
         <a class="btn" href="https://booking.mangomint.com/theblondemagnolia?staffId=36" target="_blank" rel="noopener">Book an Appointment</a>
         <a class="btn-outline" href="#gallery">See My Work</a>
       </div>
+      <img class="hero-scissors" src="images/scissors-floral.webp" alt="">
     </div>
-    <!-- Stock photos (free licence, no attribution required): Pexels 10028673,
-         Unsplash WXmHwPcFamo (Adam Winger), Pexels 3065171, Pexels 3993312. -->
+    <!-- Stock photos (Pexels licence, free, no attribution required): 10028673,
+         14615061, 3065171, 3993292. Hands and hair only - no faces, so it
+         reads as Olivia's chair rather than a big salon. -->
     <div class="hero-photos" aria-hidden="true">
       <div class="hero-arch" id="heroArch">
         <img class="on" src="images/salon-blowdry.webp" alt="" width="960" height="1200">
-        <img src="images/salon-stylist.webp" alt="" width="960" height="1200">
+        <img src="images/salon-roundbrush.webp" alt="" width="960" height="1200">
         <img src="images/salon-curls.webp" alt="" width="960" height="1200">
-        <img src="images/salon-color.webp" alt="" width="960" height="1200">
+        <img src="images/salon-colorbowl.webp" alt="" width="960" height="1200">
       </div>
-      <img class="hero-scissors" src="images/scissors-floral.webp" alt="">
     </div>
   </div>
 </section>

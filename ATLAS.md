@@ -10,8 +10,8 @@
 ## Current State
 Live on GitHub Pages with the gingham design. The hero is two columns: the
 words on the left, and on the right an arched, gold-framed slideshow of four
-free stock salon photos that crossfade with a slow zoom, with the floral
-scissors on the frame's corner. Below it: services, the category-slideshow
+free stock photos (hands and hair only, no faces) that crossfade with a slow
+zoom. Small floral scissors sit under the hero buttons. Below it: services, the category-slideshow
 gallery (opens on Olivia's Favorites), a placeholder Products I Love section,
 About, and contact.
 
@@ -34,6 +34,15 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (faceless hero photos)
+- The user doesn't want faces or stylists in the stock photos, because it's a
+  one-woman business, not a salon company. Removed `salon-stylist` and
+  `salon-color`. Added `salon-roundbrush` (Pexels 14615061) and
+  `salon-colorbowl` (Pexels 3993292). Re-cropped `salon-curls` to remove a
+  blurred background face, and confirmed the `salon-blowdry` crop leaves out
+  the stylist's smile.
+- The user disliked the scissors overlapping the photo frame, so they're now a
+  small flourish under the hero buttons, not overlapping anything.
 ### 2026-09-19 (hero photo slideshow)
 - Added four free stock photos to the hero, cropped to 4:5 WebP at 960x1200
   (~60-120 KB each) in `images/salon-*.webp`. Sources: Pexels 10028673
