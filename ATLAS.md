@@ -11,8 +11,9 @@
 Live on GitHub Pages with the gingham design. The hero on a computer has the
 photo slideshow on the left in a rectangular double-gold frame, with four
 faceless stock photos, and the words on the right. On a phone the photos go
-under the words. The floral scissors are an accent beside
-"welcome, y'all" (108px on computer, 78px on phone). Below that: services, the category-slideshow gallery, a
+under the words. Tall upright floral scissors (blades up) hang
+beside the words on computer and tablet, spanning from "welcome, y'all" to
+the buttons. Phones (760px and narrower) show no scissors. Below that: services, the category-slideshow gallery, a
 placeholder Products I Love section, About, and contact.
 
 ## Next Action
@@ -23,6 +24,7 @@ Olivia's real product picks.
 None technical. Everything outstanding needs information from Olivia.
 
 ## Open Questions
+- Where should the scissors go on phones, if anywhere? They're hidden at 760px and narrower.
 - Which products does Olivia actually use? The four product types are a guess.
 - Keep the name "Olivia's Favorites"? The user was unsure about naming it.
 - Is "black gloss" right under Dimensional Brunettes? It was a guess.
@@ -34,6 +36,21 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (tall upright scissors)
+- The user said the small scissors looked like an emoji. "welcome, y'all" is
+  back to centered on its own. The scissors are baked upright with blades up
+  into `images/scissors-upright.webp` (rotated 137 degrees, 510x834), and
+  absolutely positioned at `left:calc(100% + 26px)` of `.hero-inner`, with
+  `top:0; bottom:0`, so they match the text's height exactly.
+  `.hero-words` padding-right reserves their width.
+- Dead end: sizing a flex column from the text's height (with aspect-ratio or
+  a ResizeObserver) creates a feedback loop, because wider scissors squeeze
+  the text, which gets taller, which widens the scissors. Absolute
+  positioning avoids it.
+- The headline now uses `clamp(2.3rem, 3.5vw, 3rem)` with nowrap, and the
+  columns change at 1200px, so the scissors never pass the gutter. Swept
+  widths from 1440 down to 400: no headline overflow and no horizontal
+  scroll. Hidden at 760px and narrower; phone placement is an open question.
 ### 2026-09-19 (bigger scissors accent)
 - The user wanted the scissors bigger: 108px on computer, 78px on phone. A
   negative top margin lets them grow into spare space above without pushing

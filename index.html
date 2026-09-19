@@ -133,17 +133,23 @@
     max-width:1240px; margin:0 auto;
     padding:56px 32px 72px;
   }
-  .hero-inner{grid-area:words;}
+  /* words with the tall upright scissors beside them, spanning the text's height */
+  /* The scissors hang just right of the text and are exactly as tall as it;
+     the padding reserves their width so the pair stays centered. */
+  .hero-words{grid-area:words; padding-right:var(--scissors-room, 240px);}
+  .hero-scissors-col{
+    position:absolute; top:0; bottom:0; left:calc(100% + 26px);
+  }
+  .hero-scissors-col img{height:100%; width:auto; max-width:none; display:block;}
   .hero-photos{grid-area:photos;}
   .hero-inner{
     text-align:center;
-    max-width:620px;
+    max-width:460px;
     margin:0 auto;
     position:relative; z-index:1;
   }
-  .eyebrow-hero{font-family:var(--script); font-size:1.7rem; color:var(--bubblegum); margin-bottom:6px;
-    display:inline-flex; align-items:center; gap:12px;}
-  .hero h1{font-size:3.4rem; margin-bottom:20px; font-style:italic;}
+  .eyebrow-hero{font-family:var(--script); font-size:1.7rem; color:var(--bubblegum); margin-bottom:6px; display:block;}
+  .hero h1{font-size:clamp(2.3rem, 3.5vw, 3rem); margin-bottom:20px; font-style:italic; white-space:nowrap;}
   .hero p.lead{font-size:1.2rem; color:var(--wine-soft); max-width:460px; margin:0 auto 36px; font-family:var(--body);}
   .hero-ctas{display:flex; gap:18px; flex-wrap:wrap; justify-content:center;}
   .hero-rule{
@@ -163,13 +169,6 @@
     transition:opacity 1.8s ease, transform 8s ease-out;
   }
   .hero-arch img.on{opacity:1; transform:scale(1.1);}
-  /* small accent beside "welcome, y'all" */
-  .hero-scissors{
-    width:108px; height:auto;
-    margin:-30px 0 4px;  /* grows upward into spare space, clear of the headline */
-    transform:rotate(18deg);
-    pointer-events:none; user-select:none;
-  }
   @media (prefers-reduced-motion: reduce){
     .hero-arch img{transition:opacity 1s ease; transform:none;}
     .hero-arch img.on{transform:none;}
@@ -418,6 +417,9 @@
     .gallery-arrow.prev{left:-14px;}
     .gallery-arrow.next{right:-14px;}
   }
+  @media (max-width:1200px){
+    .hero-grid{grid-template-columns:0.7fr 1.3fr; gap:40px;}
+  }
   @media (max-width:1000px){
     .hero-grid{
       grid-template-columns:1fr;
@@ -435,10 +437,15 @@
     .service-card{padding:8px 24px;}
     .hero-photos{max-width:360px;}
   }
+  @media (max-width:760px){
+    /* not enough width for full-height scissors beside the words */
+    .hero-words{padding-right:0;}
+    .hero-scissors-col{display:none;}
+  }
   @media (max-width:640px){
     .hero-grid{gap:36px;}
     .hero-photos{max-width:300px;}
-    .hero-scissors{width:78px; margin:-22px 0 4px;}
+    .hero-words{padding-right:0;}
     .gingham-strip{height:50px; background-size:auto 260px;}
     .nav-links{
       position:absolute; top:100%; left:0; right:0;
@@ -453,7 +460,7 @@
     .menu-toggle{display:block;}
     section{padding:56px 0;}
     .hero-grid{padding:44px 24px 64px;}
-    .hero h1{font-size:2.1rem;}
+    .hero h1{font-size:2.1rem; white-space:normal;}
     .gallery-grid{--cols:2; --gap:18px;}
     .gallery-grid > .ba-pair{flex-basis:100%;}
     .service-row{flex-direction:column; align-items:flex-start; gap:4px;}
@@ -487,8 +494,9 @@
 
 <section class="hero">
   <div class="hero-grid">
+    <div class="hero-words">
     <div class="hero-inner">
-      <span class="eyebrow-hero">welcome, y'all <img class="hero-scissors" src="images/scissors-floral.webp" alt=""></span>
+      <span class="eyebrow-hero">welcome, y'all</span>
       <h1>Hair that feels like you</h1>
       <div class="hero-rule"></div>
       <p class="lead">Booth stylist at The Blonde Magnolia, specializing in women's cuts and everyday color — right here in South Carolina.</p>
@@ -496,6 +504,8 @@
         <a class="btn" href="https://booking.mangomint.com/theblondemagnolia?staffId=36" target="_blank" rel="noopener">Book an Appointment</a>
         <a class="btn-outline" href="#gallery">See My Work</a>
       </div>
+      <div class="hero-scissors-col" aria-hidden="true"><img src="images/scissors-upright.webp" alt=""></div>
+    </div>
     </div>
     <!-- Stock photos (Pexels licence, free, no attribution required): 10028673,
          14615061, 3065171, 28994645. Hands and hair only - no faces, so it
