@@ -723,6 +723,21 @@
 </footer>
 
 <script>
+  // Always open at the top. A shared link like ".../#contact", or Safari
+  // restoring the last scroll position, would otherwise drop visitors at the
+  // bottom of the page.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+  window.scrollTo(0, 0);
+  // Menu links scroll to their section without writing "#section" into the
+  // address bar, so a copied link never carries it.
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({behavior: 'smooth'});
+  }));
+
   const toggle = document.getElementById('menuToggle');
   const links = document.getElementById('navLinks');
   toggle.addEventListener('click', () => links.classList.toggle('open'));

@@ -36,6 +36,16 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-19 (mobile opens at bottom)
+- The user reported that the site jumped straight to the bottom on their phone
+  when opening the link. It couldn't be reproduced in Chromium's iPhone
+  emulation, and WebKit isn't installed. Likely causes: a shared or reopened
+  URL carrying `#contact` (nav taps wrote the hash into the address bar), or
+  Safari scroll restoration.
+- Fix: `history.scrollRestoration = 'manual'`, strip any hash on load, and
+  `scrollTo(0,0)`. In-page links now `scrollIntoView` smoothly without
+  writing the hash. Tested hash URL, menu taps, and reload after scrolling.
+  Still needs confirming on the user's real phone.
 ### 2026-09-19 (roomier hero text, scissors closer)
 - Computer hero: the photo column is 0.7fr against 1.3fr for the words, the
   text max-width is 540px (the lead paragraph now fits on two lines), and the
