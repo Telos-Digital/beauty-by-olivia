@@ -129,9 +129,9 @@
     display:grid; align-items:center;
     grid-template-columns:0.7fr 1.3fr;
     grid-template-areas:"photos words";
-    gap:56px;
+    gap:64px;
     max-width:1240px; margin:0 auto;
-    padding:56px 32px 72px;
+    padding:76px 32px 92px;
   }
   /* words with the tall upright scissors beside them, spanning the text's height */
   /* The scissors hang just right of the text and are exactly as tall as it;
@@ -150,7 +150,7 @@
   }
   .eyebrow-hero{font-family:var(--script); font-size:1.7rem; color:var(--bubblegum); margin-bottom:6px; display:block;}
   .hero h1{font-size:clamp(2.3rem, 3.5vw, 3rem); margin-bottom:20px; font-style:italic; white-space:nowrap;}
-  .hero p.lead{font-size:1.2rem; color:var(--wine-soft); max-width:520px; margin:0 auto 36px; font-family:var(--body);}
+  .hero p.lead{font-size:1.2rem; color:var(--wine-soft); max-width:520px; margin:0 auto 40px; font-family:var(--body);}
   .hero-ctas{display:flex; gap:18px; flex-wrap:wrap; justify-content:center;}
   .hero-rule{
     width:70px; height:2px; background:var(--gold); margin:0 auto 28px;
@@ -424,7 +424,7 @@
     .hero-grid{
       grid-template-columns:1fr;
       grid-template-areas:"words" "photos";
-      gap:44px; padding:56px 32px 80px;
+      gap:56px; padding:72px 32px 88px;
     }
     .gallery-grid{--cols:3;}
   }
@@ -443,7 +443,7 @@
     .hero-scissors-col{display:none;}
   }
   @media (max-width:640px){
-    .hero-grid{gap:36px;}
+    .hero-grid{gap:48px;}
     .hero-photos{max-width:300px;}
     .hero-words{padding-right:0;}
     .gingham-strip{height:50px; background-size:auto 260px;}
@@ -459,8 +459,8 @@
     .nav-links.open{display:flex;}
     .menu-toggle{display:block;}
     section{padding:56px 0;}
-    .hero-grid{padding:44px 24px 64px;}
-    .hero h1{font-size:2.1rem; white-space:normal;}
+    .hero-grid{padding:60px 20px 76px;}
+    .hero h1{font-size:2.35rem; white-space:normal; margin-bottom:24px;}
     .gallery-grid{--cols:2; --gap:18px;}
     .gallery-grid > .ba-pair{flex-basis:100%;}
     .service-row{flex-direction:column; align-items:flex-start; gap:4px;}

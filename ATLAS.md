@@ -1,7 +1,7 @@
 ## Meta
 | Field | Value |
 | Project | Beauty by Olivia |
-| Last Active | 2026-09-19 |
+| Last Active | 2026-09-22 |
 | Status | shipping |
 | Location | /home/wner/beauty-by-olivia |
 | Repo | Telos-Digital/beauty-by-olivia (public) |
@@ -36,6 +36,13 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-09-22 (roomier hero)
+- The user said the hero words felt squished, especially on mobile, and asked
+  for a bigger section. Hero padding went up on every layout (computer 76/92px,
+  stacked 72/88px, phone 60/76px), the gap between words and photo grew
+  (56px stacked, 48px phone), and the phone headline went from 2.1 to 2.35rem
+  with more space under it and the description. The words were already full
+  width on phones, so this was about vertical room.
 ### 2026-09-19 (mobile opens at bottom)
 - The user reported that the site jumped straight to the bottom on their phone
   when opening the link. It couldn't be reproduced in Chromium's iPhone
