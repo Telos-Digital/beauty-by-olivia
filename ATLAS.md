@@ -36,6 +36,13 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-11-04 (spray link)
+- The user reported the No Frizz Glistening Spray link lands on the store's
+  "oops" page. The US store appears to have retired that product page (only
+  an old blog post still mentions it; the current finishing spray is "Let It
+  Shine"). The card now links to the No Frizz collection page instead, with
+  the button text "shop the no frizz line". If Olivia confirms the spray is
+  discontinued, swap the card for whatever she uses now.
 ### 2026-11-03 (video autoplay on phones)
 - The user's phone showed a play button on the About clip instead of playing.
   Two likely causes: iOS Low Power Mode blocks autoplay until a touch, and
