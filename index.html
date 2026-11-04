@@ -695,7 +695,7 @@
 <section class="about" id="about">
   <div class="wrap about-inner">
     <div class="about-video">
-      <video id="aboutVideo" autoplay muted loop playsinline preload="metadata" poster="images/olivia-twirl-poster.webp" aria-label="Olivia twirling in a floral dress in a sunlit field">
+      <video id="aboutVideo" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="images/olivia-twirl-poster.webp" aria-label="Olivia twirling in a floral dress in a sunlit field">
         <source src="images/olivia-twirl.mp4" type="video/mp4">
       </video>
     </div>
@@ -765,10 +765,19 @@
   toggle.addEventListener('click', () => links.classList.toggle('open'));
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
 
-  // About clip: respect reduced-motion by leaving it on its poster frame.
+  // About clip: keep it playing by itself. iPhones in Low Power Mode refuse
+  // autoplay until the person touches the page, so retry on the first
+  // scroll or tap and whenever the tab comes back into view.
   const aboutVideo = document.getElementById('aboutVideo');
-  if (aboutVideo && matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    aboutVideo.removeAttribute('autoplay'); aboutVideo.pause();
+  if (aboutVideo) {
+    aboutVideo.muted = true; aboutVideo.defaultMuted = true;
+    const tryPlay = () => { const p = aboutVideo.play(); if (p && p.catch) p.catch(() => {}); };
+    const nudges = ['touchstart', 'scroll', 'click', 'keydown'];
+    const stopNudging = () => nudges.forEach(ev => removeEventListener(ev, tryPlay));
+    nudges.forEach(ev => addEventListener(ev, tryPlay, {passive:true}));
+    aboutVideo.addEventListener('playing', stopNudging);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+    tryPlay();
   }
 
   // Hero slideshow: crossfade to the next photo every few seconds.

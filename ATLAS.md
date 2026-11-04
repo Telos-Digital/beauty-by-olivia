@@ -36,6 +36,15 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-11-03 (video autoplay on phones)
+- The user's phone showed a play button on the About clip instead of playing.
+  Two likely causes: iOS Low Power Mode blocks autoplay until a touch, and
+  the reduced-motion guard stripped autoplay when iOS Reduce Motion is on.
+  Removed the guard; added JS that sets muted/defaultMuted, calls play() on
+  load, and retries on the first touchstart/scroll/click/keydown and on
+  visibilitychange, unhooking once the video reports "playing". preload is
+  now "auto". Could not reproduce Low Power Mode headlessly; needs the
+  user's phone to confirm.
 ### 2026-11-03 (milk_shake products, four more gallery photos)
 - The user dropped two shelf photos of Olivia's milk_shake products and four
   client photos into Downloads. Products identified from the bottles: Whipped
