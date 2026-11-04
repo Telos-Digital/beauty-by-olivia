@@ -1,20 +1,22 @@
 ## Meta
 | Field | Value |
 | Project | Beauty by Olivia |
-| Last Active | 2026-09-22 |
+| Last Active | 2026-11-03 |
 | Status | shipping |
 | Location | /home/wner/beauty-by-olivia |
 | Repo | Telos-Digital/beauty-by-olivia (public) |
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
 
 ## Current State
-Live on GitHub Pages with the gingham design. The hero on a computer has the
-photo slideshow on the left in a rectangular double-gold frame, with four
-faceless stock photos, and the words on the right. On a phone the photos go
-under the words. Tall upright floral scissors (blades up) hang
-beside the words on computer and tablet, spanning from "welcome, y'all" to
-the buttons. Phones (760px and narrower) show no scissors. Below that: services, the category-slideshow gallery, a
-placeholder Products I Love section, About, and contact.
+Live on GitHub Pages with the gingham design. The hero slideshow now shows
+five real photos from Olivia's branded outdoor shoot (bouquet with her card,
+comb and shears over the card, tools in her back pocket, the card held out,
+and a full-length portrait in the floral dress) in the rectangular double-gold
+frame; the stock photos are gone. The About section's "O" monogram was replaced
+by a muted, looping 3-second clip of Olivia twirling in a field, in a matching
+double-gold frame (poster frame shown under reduced-motion). Below that:
+services, the category-slideshow gallery, a placeholder Products I Love
+section, About, and contact.
 
 ## Next Action
 Add the new photos (with category, favorite, and before/after pairing) and
@@ -36,6 +38,20 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-11-03 (real photos in the hero, video in About)
+- The user dropped seven photos and one short video from Olivia's branded
+  shoot into Windows Downloads. Five photos replaced the four faceless stock
+  hero slides (`images/olivia-*.webp`, pre-cropped to 4:5 at 960x1200, q80).
+  Two full-length shots (IMG_4958 with extension swatches, IMG_4959 skirt
+  swish) were left out of the hero; keep them in Downloads for later use.
+- The About "O" monogram became the video: `images/olivia-twirl.mp4` (540px
+  wide, h.264 crf 30, no audio, 457 KB) with `olivia-twirl-poster.webp`.
+  Autoplay muted loop playsinline; JS strips autoplay under reduced-motion.
+  Frame is a 4:5 double-gold rectangle (300px, 260px on phones) rather than
+  the old 220px circle, because a full-body twirl is too small in a circle.
+- Photos revealed two leads: Olivia's shirt lists EXTENSIONS as a service
+  (not on the site) and carries a phone number, partly hidden. Ask her.
+- Stock hero WebPs (`salon-*.webp`) deleted from the repo.
 ### 2026-09-22 (roomier hero)
 - The user said the hero words felt squished, especially on mobile, and asked
   for a bigger section. Hero padding went up on every layout (computer 76/92px,

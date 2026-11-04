@@ -369,17 +369,15 @@
     gap:64px;
     align-items:center;
   }
-  .monogram{
-    width:220px; height:220px;
-    margin:0 auto;
-    border-radius:50%;
+  /* short looping clip of Olivia in the same double gold frame as the hero */
+  .about-video{
+    width:100%; max-width:300px; margin:0 auto;
+    aspect-ratio:4/5; overflow:hidden;
     border:2px solid var(--gold);
-    outline:1px solid var(--gold);
-    outline-offset:8px;
-    display:flex; align-items:center; justify-content:center;
+    outline:1px solid var(--gold); outline-offset:8px;
     background:var(--blush);
   }
-  .monogram span{font-family:var(--script); font-size:5rem; color:var(--wine);}
+  .about-video video{display:block; width:100%; height:100%; object-fit:cover;}
   .about-text .kicker{font-family:var(--script); color:var(--bubblegum); font-size:1.6rem; display:block; margin-bottom:6px;}
   .about-text h2{font-size:2.3rem; margin-bottom:18px; font-style:italic;}
   .about-text p{margin-bottom:16px; color:var(--wine); font-size:1.05rem;}
@@ -464,12 +462,11 @@
     .gallery-grid{--cols:2; --gap:18px;}
     .gallery-grid > .ba-pair{flex-basis:100%;}
     .service-row{flex-direction:column; align-items:flex-start; gap:4px;}
-    .monogram{width:170px; height:170px;}
+    .about-video{max-width:260px;}
     .product-grid{grid-template-columns:1fr;}
     .gallery-arrow{width:36px; height:36px; font-size:1.4rem; background:rgba(255,251,247,.92);}
     .gallery-arrow.prev{left:-10px;}
     .gallery-arrow.next{right:-10px;}
-    .monogram span{font-size:3.6rem;}
   }
 </style>
 </head>
@@ -512,10 +509,11 @@
          reads as Olivia's chair rather than a big salon. -->
     <div class="hero-photos" aria-hidden="true">
       <div class="hero-arch" id="heroArch">
-        <img class="on" src="images/salon-blowdry.webp" alt="" width="960" height="1200">
-        <img src="images/salon-roundbrush.webp" alt="" width="960" height="1200">
-        <img src="images/salon-curls.webp" alt="" width="960" height="1200">
-        <img src="images/salon-spray.webp" alt="" width="960" height="1200">
+        <img class="on" src="images/olivia-bouquet-card.webp" alt="" width="960" height="1200">
+        <img src="images/olivia-comb-shears.webp" alt="" width="960" height="1200">
+        <img src="images/olivia-pocket-tools.webp" alt="" width="960" height="1200">
+        <img src="images/olivia-card.webp" alt="" width="960" height="1200">
+        <img src="images/olivia-floral-dress.webp" alt="" width="960" height="1200">
       </div>
     </div>
   </div>
@@ -676,7 +674,11 @@
 
 <section class="about" id="about">
   <div class="wrap about-inner">
-    <div class="monogram"><span>O</span></div>
+    <div class="about-video">
+      <video id="aboutVideo" autoplay muted loop playsinline preload="metadata" poster="images/olivia-twirl-poster.webp" aria-label="Olivia twirling in a floral dress in a sunlit field">
+        <source src="images/olivia-twirl.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="about-text">
       <span class="kicker">meet olivia</span>
       <h2>Hi, I'm Olivia</h2>
@@ -742,6 +744,12 @@
   const links = document.getElementById('navLinks');
   toggle.addEventListener('click', () => links.classList.toggle('open'));
   links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  // About clip: respect reduced-motion by leaving it on its poster frame.
+  const aboutVideo = document.getElementById('aboutVideo');
+  if (aboutVideo && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    aboutVideo.removeAttribute('autoplay'); aboutVideo.pause();
+  }
 
   // Hero slideshow: crossfade to the next photo every few seconds.
   const heroImgs = document.querySelectorAll('#heroArch img');
