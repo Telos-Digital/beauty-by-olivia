@@ -8,26 +8,24 @@
 | Live URL | https://telos-digital.github.io/beauty-by-olivia/ |
 
 ## Current State
-Live on GitHub Pages with the gingham design. The hero slideshow now shows
-five real photos from Olivia's branded outdoor shoot (bouquet with her card,
-comb and shears over the card, tools in her back pocket, the card held out,
-and a full-length portrait in the floral dress) in the rectangular double-gold
-frame; the stock photos are gone. The About section's "O" monogram was replaced
-by a muted, looping 3-second clip of Olivia twirling in a field, in a matching
-double-gold frame (poster frame shown under reduced-motion). Below that:
-services, the category-slideshow gallery, a placeholder Products I Love
-section, About, and contact.
+Live on GitHub Pages with the gingham design. Hero: five real shoot photos in
+the double-gold frame. About: a muted looping clip of Olivia. Gallery now has
+seven real photos (favorites view shows five) plus the first real before-and-
+after pair (grown-out blonde to bright blonde). Products I Love is filled in:
+four milk_shake leave-ins (Whipped Cream, Incredible Milk, No Frizz Glistening
+Milk, No Frizz Glistening Spray), each card a bottle photo cropped from
+Olivia's own shelf shot, a one-sentence description, and a link to the
+brand's US store. One "photos coming soon" before-and-after placeholder remains.
 
 ## Next Action
-Add the new photos (with category, favorite, and before/after pairing) and
-Olivia's real product picks.
+Ask Olivia about extensions (her shirt lists it as a service), the phone
+number on her shirt, and her Facebook URL; add more gallery pairs as they come.
 
 ## Blockers
 None technical. Everything outstanding needs information from Olivia.
 
 ## Open Questions
 - Where should the scissors go on phones, if anywhere? They're hidden at 760px and narrower.
-- Which products does Olivia actually use? The four product types are a guess.
 - Keep the name "Olivia's Favorites"? The user was unsure about naming it.
 - Is "black gloss" right under Dimensional Brunettes? It was a guess.
 - Facebook profile URL for Olivia Dixon, to turn the mention into a link.
@@ -38,6 +36,25 @@ None technical. Everything outstanding needs information from Olivia.
   $14 to $19 to renew, and it would make a real forwarding email possible.
 
 ## Session Log
+### 2026-11-03 (milk_shake products, four more gallery photos)
+- The user dropped two shelf photos of Olivia's milk_shake products and four
+  client photos into Downloads. Products identified from the bottles: Whipped
+  Cream (leave-in foam), Incredible Milk (12 effects leave-in), No Frizz
+  Glistening Milk (125 ml), No Frizz Glistening Spray (100 ml).
+- Official product pages are on us.milkshakehair.com. The site answers 429 to
+  every direct fetch (bot protection), so the URLs were confirmed through the
+  search index of that domain, not by loading them. Spot-check in a browser.
+- Products section rebuilt: the fixed wash-day/color-care/styling/treatment
+  labels are gone (the user said the slots need not keep them). Each card is
+  now an `<a>` to the product page with a bottle crop
+  (`images/product-*.webp`, cut from IMG_4960) shown via object-fit:contain
+  in a 210px box, the script kicker reads "milk_shake", and a small "shop it"
+  underline sits at the bottom.
+- Gallery: `blonde-before.webp` + `blonde-after.webp` are the same client in
+  the same pink floral top, so they became the first real `.ba-pair`. The
+  after shot also stands alone under Blonding (favorite). Two copper shots
+  went under Dimensional Brunettes (`copper-waves.webp` favorite,
+  `copper-waves-2.webp`). Favorites view now shows 5 tiles (4 + 1).
 ### 2026-11-03 (real photos in the hero, video in About)
 - The user dropped seven photos and one short video from Olivia's branded
   shoot into Windows Downloads. Five photos replaced the four faceless stock

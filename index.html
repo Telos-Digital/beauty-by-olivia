@@ -344,22 +344,31 @@
   }
   .gallery-item span{font-family:var(--script); font-size:1.1rem; text-align:center; color:var(--wine-soft); padding-top:10px;}
 
-  /* PRODUCTS - simple text cards until there are product photos */
+  /* PRODUCTS - milk_shake picks; each card links to the product page */
   .products{background:var(--blush);}
   .product-grid{
     display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:22px;
     max-width:980px; margin:0 auto;
   }
   .product-card{
+    display:flex; flex-direction:column; align-items:center;
     background:var(--cream);
     border:1px solid var(--gold);
-    padding:30px 22px 28px;
+    padding:24px 22px 26px;
     text-align:center;
+    color:inherit; text-decoration:none;
+    transition:transform .25s ease, box-shadow .25s ease;
   }
+  .product-card:hover,.product-card:focus-visible{transform:translateY(-3px); box-shadow:0 10px 24px rgba(122,38,58,.12);}
+  .product-photo{height:210px; width:auto; max-width:100%; object-fit:contain; margin-bottom:18px;}
   .product-card .type{font-family:var(--script); font-size:1.35rem; color:var(--bubblegum); display:block; margin-bottom:6px;}
   .product-card h3{font-size:1.3rem; font-style:italic; margin-bottom:10px;}
-  .product-card p{font-size:.92rem; color:var(--wine-soft);}
+  .product-card p{font-size:.92rem; color:var(--wine-soft); flex:1;}
   .product-card .rule{width:36px; height:1.5px; background:var(--gold); margin:0 auto 12px;}
+  .product-card .shop{
+    display:inline-block; margin-top:16px; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--wine); border-bottom:1px solid var(--gold); padding-bottom:3px;
+  }
 
   /* ABOUT */
   .about{background:var(--cream);}
@@ -615,11 +624,14 @@
       <div class="gallery-item" data-category="balayage" data-favorite><img class="gallery-photo" src="images/caramel-balayage.webp" width="1000" height="1333" loading="lazy" alt="Long wavy hair in a warm caramel balayage, photographed from behind at The Blonde Magnolia"><span>caramel balayage</span></div>
       <div class="gallery-item" data-category="brunettes" data-favorite><img class="gallery-photo" src="images/black-gloss.webp" width="1000" height="1333" loading="lazy" alt="Long straight black hair with a high-shine gloss, photographed from behind at The Blonde Magnolia"><span>black gloss</span></div>
       <div class="gallery-item" data-category="highlights" data-favorite><img class="gallery-photo" src="images/honey-highlights.webp" width="1000" height="1333" loading="lazy" alt="Long wavy hair in honey and copper highlights with a face-framing cut, styled at The Blonde Magnolia"><span>honey highlights</span></div>
+      <div class="gallery-item" data-category="blonding" data-favorite><img class="gallery-photo" src="images/blonde-after.webp" width="1000" height="1333" loading="lazy" alt="Bright blonde lived-in color in soft waves on a shoulder-length cut, photographed from behind at The Blonde Magnolia"><span>bright blonde waves</span></div>
+      <div class="gallery-item" data-category="brunettes" data-favorite><img class="gallery-photo" src="images/copper-waves.webp" width="1000" height="1333" loading="lazy" alt="Long auburn copper hair in glossy waves, photographed from behind at The Blonde Magnolia"><span>auburn copper waves</span></div>
+      <div class="gallery-item" data-category="brunettes"><img class="gallery-photo" src="images/copper-waves-2.webp" width="1000" height="1333" loading="lazy" alt="Long auburn copper waves held out to show the dimension, photographed from behind at The Blonde Magnolia"><span>copper, all the dimension</span></div>
       <!-- Before & afters: swap each patterned half for
            <img class="gallery-photo" src="images/..." alt="..."> -->
       <div class="gallery-item ba-pair" data-category="before-after">
-        <div class="ba-photos"><div class="ba-half"><div class="gallery-photo soon pattern-1"></div><b>before</b></div><div class="rule"></div><div class="ba-half"><div class="gallery-photo soon pattern-3"></div><b>after</b></div></div>
-        <span>photos coming soon</span>
+        <div class="ba-photos"><div class="ba-half"><img class="gallery-photo" src="images/blonde-before.webp" width="1000" height="1333" loading="lazy" alt="Before: grown-out blonde with dark roots and brassy ends"><b>before</b></div><div class="rule"></div><div class="ba-half"><img class="gallery-photo" src="images/blonde-after.webp" width="1000" height="1333" loading="lazy" alt="After: bright blonde lived-in color in soft waves"><b>after</b></div></div>
+        <span>grown-out to bright blonde</span>
       </div>
       <div class="gallery-item ba-pair" data-category="before-after">
         <div class="ba-photos"><div class="ba-half"><div class="gallery-photo soon pattern-2"></div><b>before</b></div><div class="rule"></div><div class="ba-half"><div class="gallery-photo soon pattern-4"></div><b>after</b></div></div>
@@ -632,40 +644,48 @@
 
 <div class="scallop scallop-blush"></div>
 
-<!-- Products Olivia likes. Swap each "Her pick coming soon" for the product
-     name, and the line under it for a sentence on why she loves it. -->
+<!-- Products Olivia uses. milk_shake (z.one concept); links go to the brand's US store.
+     To add one: copy a card, change the photo, name, sentence, and href. -->
 <section class="products" id="products">
   <div class="wrap">
     <div class="section-head">
       <span class="kicker">on her shelf</span>
       <h2>Products I Love</h2>
-      <p>The things I reach for in the chair — and the ones I send clients home with.</p>
+      <p>The milk_shake leave-ins I reach for in the chair &mdash; and the ones I send clients home with.</p>
     </div>
     <div class="product-grid">
-      <div class="product-card">
-        <span class="type">wash day</span>
+      <a class="product-card" href="https://us.milkshakehair.com/products/milk-shake-whipped-cream" target="_blank" rel="noopener">
+        <img class="product-photo" src="images/product-whipped-cream.webp" width="202" height="900" loading="lazy" alt="milk_shake whipped cream leave-in foam">
+        <span class="type">milk_shake</span>
         <div class="rule"></div>
-        <h3>Her pick coming soon</h3>
-        <p>The shampoo &amp; conditioner I recommend most.</p>
-      </div>
-      <div class="product-card">
-        <span class="type">color care</span>
+        <h3>Whipped Cream</h3>
+        <p>A no-rinse leave-in conditioning foam with milk proteins. Softens and detangles every hair type without weighing it down.</p>
+        <span class="shop">shop it</span>
+      </a>
+      <a class="product-card" href="https://us.milkshakehair.com/products/milk-shake-incredible-milk" target="_blank" rel="noopener">
+        <img class="product-photo" src="images/product-incredible-milk.webp" width="195" height="900" loading="lazy" alt="milk_shake incredible milk 12 effects leave-in spray">
+        <span class="type">milk_shake</span>
         <div class="rule"></div>
-        <h3>Her pick coming soon</h3>
-        <p>What keeps blondes bright and brunettes glossy between visits.</p>
-      </div>
-      <div class="product-card">
-        <span class="type">styling</span>
+        <h3>Incredible Milk</h3>
+        <p>One leave-in spray, twelve jobs: detangles, protects from heat, fights frizz, adds shine, and keeps color looking fresh.</p>
+        <span class="shop">shop it</span>
+      </a>
+      <a class="product-card" href="https://us.milkshakehair.com/products/milk_shake-glistening-milk" target="_blank" rel="noopener">
+        <img class="product-photo" src="images/product-glistening-milk.webp" width="201" height="900" loading="lazy" alt="milk_shake no frizz glistening milk">
+        <span class="type">milk_shake</span>
         <div class="rule"></div>
-        <h3>Her pick coming soon</h3>
-        <p>My go-to for smooth blowouts and soft waves.</p>
-      </div>
-      <div class="product-card">
-        <span class="type">treatment</span>
+        <h3>No Frizz Glistening Milk</h3>
+        <p>A moisture-and-shine milk for frizz-prone hair. Smooths flyaways and shields strands from heat during a blowout.</p>
+        <span class="shop">shop it</span>
+      </a>
+      <a class="product-card" href="https://us.milkshakehair.com/products/milk_shake-glistening-spray" target="_blank" rel="noopener">
+        <img class="product-photo" src="images/product-glistening-spray.webp" width="226" height="900" loading="lazy" alt="milk_shake no frizz glistening spray">
+        <span class="type">milk_shake</span>
         <div class="rule"></div>
-        <h3>Her pick coming soon</h3>
-        <p>A little extra love for dry or damaged hair.</p>
-      </div>
+        <h3>No Frizz Glistening Spray</h3>
+        <p>A weightless polishing spray for the finish: glossy hair, no static, and frizz kept down between washes.</p>
+        <span class="shop">shop it</span>
+      </a>
     </div>
   </div>
 </section>
